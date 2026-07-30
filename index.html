@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetSol - Crea tu sitio web</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS CSS para Animaciones -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- TU ARCHIVO CSS PERSONALIZADO -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full top-0 z-50 bg-[#121212]/90 backdrop-blur-md border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center relative">
+            
+            <div class="flex items-center gap-2 cursor-pointer relative z-20">
+                <div class="flex gap-1">
+                    <div class="w-1.5 h-6 bg-cyan-300"></div>
+                    <div class="w-1.5 h-6 bg-blue-500"></div>
+                    <div class="w-1.5 h-6 bg-indigo-600"></div>
+                </div>
+                <span class="text-xl font-bold tracking-widest uppercase">NetSol</span>
+            </div>
+            
+            <!-- Enlaces (Escritorio + Móvil adaptado) -->
+            <div id="menu-links" class="hidden absolute top-full left-0 w-full bg-[#121212]/95 backdrop-blur-lg border-b border-gray-800 md:border-none flex-col py-6 px-6 gap-6 text-sm font-semibold text-center md:static md:w-auto md:bg-transparent md:flex-row md:py-0 md:px-0 md:flex md:gap-8 transition-all duration-300 z-10">
+                <a href="#webs-portables" class="menu-item hover:text-cyan-400 transition md:hover:underline underline-offset-4 decoration-cyan-400">Webs Portables</a>
+                <a href="#servicios" class="menu-item hover:text-cyan-400 transition">Servicios</a>
+                <a href="#proyectos" class="menu-item hover:text-cyan-400 transition">Proyectos</a>
+                <a href="#contactanos" class="menu-item hover:text-cyan-400 transition">Contactanos</a>
+            </div>
+            
+            <!-- Menú hamburguesa para móvil -->
+            <div id="btn-menu" class="md:hidden text-2xl cursor-pointer relative z-20 text-gray-300 hover:text-cyan-400 transition">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECCIÓN: PORTADA -->
+    <section id="inicio" class="relative min-h-screen flex items-center pt-20">
+        <div class="absolute inset-0 z-0">
+            <img src="img/fondo negro.jpg" alt="Fondo" class="w-full h-full object-cover opacity-30">
+            <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#121212] to-transparent"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between overflow-hidden">
+            <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0 mt-10 md:mt-0" data-aos="fade-right" data-aos-duration="1000">
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-black italic uppercase leading-tight mb-4">
+                    <span class="text-cyan-400">Crea</span> tu sitio web<br>con nosotros
+                </h1>
+                <p class="text-gray-300 text-lg md:text-xl max-w-lg mx-auto md:mx-0">
+                    En NetSol transformamos tus ideas en soluciones digitales efectivas y atractivas, desde páginas web hasta aplicaciones empresariales.
+                </p>
+            </div>
+            
+            <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
+                <img src="img/laptop.png" alt="Laptop Mockup" class="w-[90%] max-w-2xl md:max-w-3xl transform md:scale-125 blend-screen">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: WEBS PORTABLES -->
+    <section id="webs-portables" class="py-24 relative overflow-hidden bg-[#121212]">
+        <div class="absolute top-20 left-0 w-72 h-72 bg-cyan-400 rounded-full mix-blend-screen filter blur-[120px] opacity-30"></div>
+        <div class="absolute bottom-0 right-10 w-96 h-96 bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px] opacity-30"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-center bg-[#1a1a1a] rounded-3xl p-8 md:p-16 shadow-2xl max-w-6xl">
+            <div class="md:w-1/2 mb-12 md:mb-0 text-center md:text-left" data-aos="fade-right">
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-black italic uppercase leading-none mb-6">
+                    <span class="text-cyan-300 text-shadow">WEBS</span><br>PORTABLES
+                </h2>
+                <p class="text-gray-300 text-lg md:text-xl md:pr-12">
+                    Desarrollamos aplicaciones accesibles desde cualquier dispositivo, mejorando significativamente su alcance y permitiendo que todos puedan usarlas fácilmente.
+                </p>
+            </div>
+            
+            <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+                <img src="img/celular.png" alt="App Mobile Mockup" class="w-56 sm:w-72 md:w-96 blend-screen transform rotate-3 hover:scale-105 transition duration-500 mt-6 md:mt-0">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: SERVICIOS -->
+    <section id="servicios" class="py-24 bg-[#181818] text-center">
+        <h2 class="text-4xl font-black italic uppercase mb-16 md:mb-20 tracking-wide" data-aos="fade-up">Servicios</h2>
+        
+        <div class="container mx-auto px-6 flex flex-wrap justify-center gap-12 md:gap-24">
+            <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="100">
+                <div class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-cyan-300 flex items-center justify-center mb-6 animate-glow-cyan text-black text-4xl md:text-5xl">
+                    <i class="fa-solid fa-window-maximize"></i>
+                </div>
+                <h3 class="text-xl md:text-2xl font-black italic">Creacion</h3>
+            </div>
+            
+            <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="200">
+                <div class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-indigo-600 flex items-center justify-center mb-6 animate-glow-indigo text-white text-4xl md:text-5xl">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+                <h3 class="text-xl md:text-2xl font-black italic">Mantenimiento</h3>
+            </div>
+            
+            <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="300">
+                <div class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-cyan-300 flex items-center justify-center mb-6 animate-glow-cyan text-black text-4xl md:text-5xl">
+                    <i class="fa-solid fa-circle-question"></i>
+                </div>
+                <h3 class="text-xl md:text-2xl font-black italic">Soporte</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: PROYECTOS -->
+    <section id="proyectos" class="py-24 bg-[#181818] text-center border-t border-[#222222]">
+        <h2 class="text-4xl font-black italic uppercase mb-16 tracking-wide" data-aos="fade-up">PROYECTOS</h2>
+        
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl">
+            
+            <div class="bg-[#1e1e1e] rounded-3xl p-6 shadow-[0_0_20px_rgba(34,211,238,0.2)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] transition duration-300 border border-gray-800" data-aos="flip-left">
+                <div class="h-48 bg-gray-700 rounded-xl mb-6 flex items-center justify-center overflow-hidden">
+                    <img src="img/emmaa.jpg" alt="Emma Balaguer" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300">
+                </div>
+                <h3 class="text-xl font-bold uppercase mb-4">Centro Educativo</h3>
+                <p class="text-gray-400 mb-6 text-sm">
+                    Portal web moderno y visualmente hermoso para un centro educativo, mejorando la experiencia de estudiantes y profesores.
+                </p>
+                <a href="https://centroemmabalaguerdevallejo.edu.do/" target="_blank" class="inline-block bg-cyan-300 text-black font-bold py-2 px-6 rounded hover:bg-cyan-400 transition">Ver mas</a>
+            </div>
+
+            <div class="bg-[#1e1e1e] rounded-3xl p-6 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition duration-300 border border-gray-800" data-aos="flip-right">
+                 <div class="h-48 bg-gray-700 rounded-xl mb-6 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="GestiWeb" class="w-full h-full object-cover opacity-60">
+                </div>
+                <h3 class="text-xl font-bold uppercase mb-4">GestiWeb</h3>
+                <p class="text-gray-400 mb-6 text-sm">
+                    Portal web moderno y visualmente hermoso enfocado en la gestion empresarial y de inventario, simple, sencilla y eficiente.
+                </p>
+                <a href="#" class="inline-block bg-cyan-300 text-black font-bold py-2 px-6 rounded hover:bg-cyan-400 transition">Ver mas</a>
+            </div>
+            
+        </div>
+        
+        <div class="mt-12" data-aos="fade-up">
+            <button class="bg-black border border-gray-600 text-white font-bold py-3 px-8 rounded hover:bg-gray-800 transition">Ver todo</button>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: CONTACTANOS -->
+    <section id="contactanos" class="py-24 bg-[#1e1e1e] relative">
+        <div class="hidden md:block absolute left-0 top-1/2 w-8 h-8 bg-cyan-400"></div>
+        <div class="hidden md:block absolute right-1/4 top-10 w-12 h-12 bg-cyan-400"></div>
+        
+        <div class="container mx-auto px-6 flex flex-col md:flex-row max-w-5xl gap-12 md:gap-16">
+            
+            <div class="md:w-1/2" data-aos="fade-right">
+                <h2 class="text-4xl sm:text-5xl font-black italic uppercase mb-2">Contactanos</h2>
+                <p class="text-gray-400 text-sm mb-10">Para consultas, dudas, sugerencias o mas llene el siguiente formulario o a traves de alguna de nuestras redes sociales</p>
+                
+                <form action="https://formsubmit.co/somosnetsol@gmail.com" method="POST" class="space-y-8">
+                    <input type="hidden" name="_subject" value="Nuevo mensaje desde la web de NetSol!">
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <div>
+                        <input type="text" name="Nombre" placeholder="Nombre" required class="input-line">
+                    </div>
+                    <div>
+                        <input type="email" name="Correo" placeholder="Correo" required class="input-line">
+                    </div>
+                    <div>
+                        <input type="text" name="Mensaje" placeholder="Mensaje" required class="input-line">
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-[#111111] border border-gray-700 hover:bg-gray-800 text-white font-bold py-3 rounded transition shadow-lg">
+                        Enviar
+                    </button>
+                </form>
+            </div>
+            
+            <div class="md:w-1/2 bg-[#161616] p-8 sm:p-10 rounded-xl border border-gray-800" data-aos="fade-left">
+                <h3 class="text-2xl font-black italic mb-8">Contacto</h3>
+                
+                <div class="space-y-6 text-gray-300 font-semibold break-words">
+                    <div class="flex items-center gap-4 hover:text-cyan-300 transition">
+                        <i class="fa-regular fa-envelope text-xl shrink-0"></i>
+                        <a href="mailto:somosnetsol@gmail.com" class="underline decoration-gray-500">somosnetsol@gmail.com</a>
+                    </div>
+                    <div class="flex items-center gap-4 hover:text-cyan-300 transition">
+                        <i class="fa-solid fa-phone text-xl shrink-0"></i>
+                        <span>+1 (849) 466-1247</span>
+                    </div>
+                    <div class="flex items-center gap-4 hover:text-cyan-300 transition">
+                        <i class="fa-regular fa-clock text-xl shrink-0"></i>
+                        <span>8:00 AM-6:00 PM</span>
+                    </div>
+                    <div class="flex items-center gap-4 hover:text-cyan-300 transition">
+                        <i class="fa-solid fa-at text-xl shrink-0"></i>
+                        <span>somosnetsol</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#111111] py-8 border-t border-gray-800">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-2 mb-4 md:mb-0">
+                <div class="flex items-center gap-2">
+                    <div class="flex gap-1">
+                        <div class="w-1.5 h-5 bg-cyan-300"></div>
+                        <div class="w-1.5 h-5 bg-blue-500"></div>
+                        <div class="w-1.5 h-5 bg-indigo-600"></div>
+                    </div>
+                    <span class="text-lg font-bold tracking-widest uppercase">NetSol</span>
+                </div>
+                
+                <div class="flex gap-6 md:ml-6 text-xl mt-2 md:mt-0">
+                    <a href="https://www.instagram.com/neetsol?igsh=MWFrdW5zM2xjdThhdw==" class="hover:text-cyan-400 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1CbZXqxJZi/" class="hover:text-cyan-400 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+            
+            <div class="text-xs text-gray-600 font-bold uppercase tracking-wider mt-2 md:mt-0">
+                todos los derechos reservados. somosnetsol@
+            </div>
+        </div>
+    </footer>
+
+    <!-- Archivo JS de la librería de animaciones (Debe ir antes de tu main.js) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- TU ARCHIVO JAVASCRIPT PERSONALIZADO -->
+    <script src="main.js"></script>
+</body>
+</html>
