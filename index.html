@@ -1,223 +1,428 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NetSol - Crea tu sitio web</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    
+
     <!-- Font Awesome para Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- AOS CSS para Animaciones -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- TU ARCHIVO CSS PERSONALIZADO -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="antialiased">
 
     <!-- NAVBAR -->
-    <nav class="fixed w-full top-0 z-50 bg-[#121212]/90 backdrop-blur-md border-b border-gray-800">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center relative">
-            
-            <div class="flex items-center gap-2 cursor-pointer relative z-20">
-                <div class="flex gap-1">
-                    <div class="w-1.5 h-6 bg-cyan-300"></div>
-                    <div class="w-1.5 h-6 bg-blue-500"></div>
-                    <div class="w-1.5 h-6 bg-indigo-600"></div>
+    <nav class="fixed w-full top-0 z-50 transition-all duration-500 bg-[#0a0a0a]/40 backdrop-blur-2xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex items-center justify-between h-16 relative">
+
+                <!-- Logo Animado Ajustado -->
+                <a href="#" class="group flex items-center gap-2 z-50">
+                    <div class="w-9 h-9 bg-gradient-to-tr from-cyan-400 to-cyan-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-[0_0_20px_rgba(34,211,238,0.5)] group-hover:rotate-6 transition-all duration-300">
+                        <span class="text-black font-black text-lg italic">N</span>
+                    </div>
+                    <span class="text-xl font-black italic tracking-widest text-white transition-colors">
+                        NET<span class="text-cyan-400">SOL</span>
+                    </span>
+                </a>
+
+                <!-- Enlaces de Navegación (Desktop) -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-300 text-sm uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors duration-300 relative group py-1">
+                        Inicio
+                        <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-400 transition-all duration-300 ease-out group-hover:w-full group-hover:left-0 rounded-full"></span>
+                    </a>
+                    <a href="#servicios" class="text-gray-300 text-sm uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors duration-300 relative group py-1">
+                        Servicios
+                        <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-400 transition-all duration-300 ease-out group-hover:w-full group-hover:left-0 rounded-full"></span>
+                    </a>
+                    <a href="#proyectos" class="text-gray-300 text-sm uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors duration-300 relative group py-1">
+                        Proyectos
+                        <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-400 transition-all duration-300 ease-out group-hover:w-full group-hover:left-0 rounded-full"></span>
+                    </a>
                 </div>
-                <span class="text-xl font-bold tracking-widest uppercase">NetSol</span>
+
+                <!-- Botón CTA (Desktop) -->
+                <div class="hidden md:block">
+                    <a href="#contactanos" class="relative inline-flex items-center justify-center px-6 py-2 text-xs font-bold tracking-widest text-cyan-400 uppercase bg-transparent border border-cyan-400/50 rounded-full hover:bg-cyan-400 hover:text-black hover:shadow-[0_0_20px_rgba(34,211,238,0.6)] hover:border-transparent transition-all duration-500">
+                        Contáctanos
+                    </a>
+                </div>
+
+                <!-- Botón Menú Hamburguesa (Móvil) - ID AGREGADO -->
+                <div class="md:hidden z-50">
+                    <button id="btn-menu" class="text-gray-300 hover:text-cyan-400 focus:outline-none transition-colors p-1">
+                        <!-- Cambiado a fa-bars para que coincida exactamente con tu JS -->
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+
             </div>
-            
-            <!-- Enlaces (Escritorio + Móvil adaptado) -->
-            <div id="menu-links" class="hidden absolute top-full left-0 w-full bg-[#121212]/95 backdrop-blur-lg border-b border-gray-800 md:border-none flex-col py-6 px-6 gap-6 text-sm font-semibold text-center md:static md:w-auto md:bg-transparent md:flex-row md:py-0 md:px-0 md:flex md:gap-8 transition-all duration-300 z-10">
-                <a href="#webs-portables" class="menu-item hover:text-cyan-400 transition md:hover:underline underline-offset-4 decoration-cyan-400">Webs Portables</a>
-                <a href="#servicios" class="menu-item hover:text-cyan-400 transition">Servicios</a>
-                <a href="#proyectos" class="menu-item hover:text-cyan-400 transition">Proyectos</a>
-                <a href="#contactanos" class="menu-item hover:text-cyan-400 transition">Contactanos</a>
-            </div>
-            
-            <!-- Menú hamburguesa para móvil -->
-            <div id="btn-menu" class="md:hidden text-2xl cursor-pointer relative z-20 text-gray-300 hover:text-cyan-400 transition">
-                <i class="fas fa-bars"></i>
-            </div>
+        </div>
+
+        <!-- CONTENEDOR DEL MENÚ MÓVIL (NUEVO) -->
+        <div id="menu-links" class="hidden flex-col items-center bg-[#0a0a0a]/95 backdrop-blur-2xl absolute top-16 left-0 w-full py-8 space-y-6 border-b border-white/5 md:hidden shadow-2xl">
+            <a href="#inicio" class="menu-item text-gray-300 text-sm uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors">Inicio</a>
+            <a href="#servicios" class="menu-item text-gray-300 text-sm uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors">Servicios</a>
+            <a href="#proyectos" class="menu-item text-gray-300 text-sm uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors">Proyectos</a>
+            <a href="#contactanos" class="menu-item px-6 py-2 text-xs font-bold tracking-widest text-cyan-400 uppercase border border-cyan-400/50 rounded-full hover:bg-cyan-400 hover:text-black transition-all">Contáctanos</a>
         </div>
     </nav>
 
     <!-- SECCIÓN: PORTADA -->
-    <section id="inicio" class="relative min-h-screen flex items-center pt-20">
+    <section id="inicio" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <!-- Fondo -->
         <div class="absolute inset-0 z-0">
             <img src="img/fondo negro.jpg" alt="Fondo" class="w-full h-full object-cover opacity-30">
             <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#121212] to-transparent"></div>
         </div>
-        
-        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between overflow-hidden">
-            <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0 mt-10 md:mt-0" data-aos="fade-right" data-aos-duration="1000">
-                <h1 class="text-5xl sm:text-6xl md:text-7xl font-black italic uppercase leading-tight mb-4">
-                    <span class="text-cyan-400">Crea</span> tu sitio web<br>con nosotros
+
+        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 max-w-7xl">
+
+            <!-- Columna Izquierda -->
+            <div class="md:w-1/2 text-center md:text-left z-20 mt-10 md:mt-0" data-aos="fade-right" data-aos-duration="1000">
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-black italic uppercase leading-tight mb-6">
+                    CREAMOS <br>
+                    <span class="text-cyan-400">SOFTWARE</span><br>
+                    A TU MEDIDA
                 </h1>
-                <p class="text-gray-300 text-lg md:text-xl max-w-lg mx-auto md:mx-0">
-                    En NetSol transformamos tus ideas en soluciones digitales efectivas y atractivas, desde páginas web hasta aplicaciones empresariales.
+                <p class="text-gray-300 text-lg md:text-xl max-w-lg mx-auto md:mx-0 font-light leading-relaxed mb-10">
+                    Transformamos tus ideas en código. Desarrollamos páginas web, aplicaciones móviles y sistemas eficientes para impulsar tu negocio.
                 </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                    <a href="#contactanos" class="px-8 py-3 bg-cyan-400 text-black font-bold uppercase tracking-widest rounded hover:bg-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-300">
+                        Iniciar Proyecto
+                    </a>
+                </div>
             </div>
-            
-            <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
-                <img src="img/laptop.png" alt="Laptop Mockup" class="w-[90%] max-w-2xl md:max-w-3xl transform md:scale-125 blend-screen">
+
+            <!-- Columna Derecha: Ecosistema 3D (CORREGIDO PARA MÓVILES) -->
+            <!-- Se agregó mt-24 y mb-16 en móviles para dar espacio a las tarjetas absolutas -->
+            <div class="md:w-1/2 flex justify-center relative z-10 w-full mt-24 mb-16 md:mt-0 md:mb-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+
+                <!-- Tarjeta 1: Web -->
+                <!-- Se quitó 'hidden sm:block', se ajustó la posición y se usó scale-75 en móviles -->
+                <div class="absolute -top-12 left-0 md:-left-4 z-30 transform scale-[0.65] sm:scale-100 origin-top-left">
+                    <div class="burbuja-ola ola-1 bg-[#1a1a1a] border border-gray-800 p-4 rounded-xl shadow-xl">
+                        <div class="flex items-center gap-4">
+                            <div class="text-cyan-400 text-2xl"><i class="fa-solid fa-globe"></i></div>
+                            <div>
+                                <p class="text-white font-bold text-sm">Web</p>
+                                <p class="text-gray-500 text-xs">Interfaces Modernas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Sistemas -->
+                <!-- Se quitó 'hidden sm:block', se ajustó la posición y se usó scale-75 en móviles -->
+                <div class="absolute top-1/2 -right-4 md:-right-8 z-30 transform -translate-y-1/2 scale-[0.65] sm:scale-100 origin-right">
+                    <div class="burbuja-ola ola-3 bg-[#1a1a1a] border border-gray-800 p-4 rounded-xl shadow-xl">
+                        <div class="flex items-center gap-4">
+                            <div class="text-cyan-400 text-2xl"><i class="fa-solid fa-database"></i></div>
+                            <div>
+                                <p class="text-white font-bold text-sm">Sistemas</p>
+                                <p class="text-gray-500 text-xs">Escalables & Seguros</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Apps -->
+                <!-- Se ajustó la posición inferior para que no se corte y scale-75 en móviles -->
+                <div class="absolute -bottom-12 left-4 md:left-20 z-40 transform scale-[0.65] sm:scale-100 origin-bottom-left">
+                    <div class="burbuja-ola ola-2 bg-[#1a1a1a] border border-gray-800 p-4 rounded-xl shadow-xl">
+                        <div class="flex items-center gap-4">
+                            <div class="text-cyan-400 text-2xl"><i class="fa-solid fa-mobile-screen"></i></div>
+                            <div>
+                                <p class="text-white font-bold text-sm">Móvil</p>
+                                <p class="text-gray-500 text-xs">iOS & Android</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenedor Principal (Laptop + Brillo) -->
+                <div class="relative w-full flex justify-center items-center">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 md:w-96 h-64 md:h-96 bg-cyan-400/10 rounded-full blur-[80px] z-0 pointer-events-none"></div>
+                    <div class="relative z-10 w-[85%] sm:w-[90%] max-w-2xl md:max-w-3xl">
+                        <img src="img/laptop.png" alt="Desarrollo Multiplataforma Mockup" class="w-full transform scale-110 md:scale-125 blend-screen drop-shadow-2xl">
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <!-- SECCIÓN: WEBS PORTABLES -->
-    <section id="webs-portables" class="py-24 relative overflow-hidden bg-[#121212]">
-        <div class="absolute top-20 left-0 w-72 h-72 bg-cyan-400 rounded-full mix-blend-screen filter blur-[120px] opacity-30"></div>
-        <div class="absolute bottom-0 right-10 w-96 h-96 bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px] opacity-30"></div>
-        
-        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-center bg-[#1a1a1a] rounded-3xl p-8 md:p-16 shadow-2xl max-w-6xl">
-            <div class="md:w-1/2 mb-12 md:mb-0 text-center md:text-left" data-aos="fade-right">
+    <section id="webs-portables" class="py-24 relative overflow-hidden bg-gradient-to-b from-[#121212] to-[#181818]">
+
+        <!-- Esfera de luz 1 (Animación ola-1) -->
+        <div
+            class="burbuja-ola ola-1 absolute top-20 left-0 w-72 h-72 bg-cyan-400 rounded-full mix-blend-screen filter blur-[120px] opacity-30">
+        </div>
+
+        <!-- Esfera de luz 2 (Animación ola-3 para que se mueva en distinto tiempo) -->
+        <div
+            class="burbuja-ola ola-3 absolute bottom-0 right-10 w-96 h-96 bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px] opacity-30">
+        </div>
+
+        <div
+            class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-center bg-[#1a1a1a] rounded-3xl p-8 md:p-16 shadow-2xl max-w-6xl">
+
+            <div class="md:w-1/2 mb-12 md:mb-0 text-center md:text-left z-20" data-aos="fade-right">
                 <h2 class="text-4xl sm:text-5xl md:text-6xl font-black italic uppercase leading-none mb-6">
                     <span class="text-cyan-300 text-shadow">WEBS</span><br>PORTABLES
                 </h2>
                 <p class="text-gray-300 text-lg md:text-xl md:pr-12">
-                    Desarrollamos aplicaciones accesibles desde cualquier dispositivo, mejorando significativamente su alcance y permitiendo que todos puedan usarlas fácilmente.
+                    Desarrollamos aplicaciones accesibles desde cualquier dispositivo, mejorando significativamente su
+                    alcance y permitiendo que todos puedan usarlas fácilmente.
                 </p>
             </div>
-            
-            <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
-                <img src="img/celular.png" alt="App Mobile Mockup" class="w-56 sm:w-72 md:w-96 blend-screen transform rotate-3 hover:scale-105 transition duration-500 mt-6 md:mt-0">
+
+            <div class="md:w-1/2 flex justify-center z-10" data-aos="fade-left">
+                <img src="img/celular.png" alt="App Mobile Mockup"
+                    class="w-56 sm:w-72 md:w-96 blend-screen transform rotate-3 md:scale-[1.75] transition duration-500 mt-6 md:mt-0">
             </div>
+
         </div>
     </section>
 
     <!-- SECCIÓN: SERVICIOS -->
     <section id="servicios" class="py-24 bg-[#181818] text-center">
         <h2 class="text-4xl font-black italic uppercase mb-16 md:mb-20 tracking-wide" data-aos="fade-up">Servicios</h2>
-        
+
         <div class="container mx-auto px-6 flex flex-wrap justify-center gap-12 md:gap-24">
+
+            <!-- Burbuja 1: Creación -->
             <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="100">
-                <div class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-cyan-300 flex items-center justify-center mb-6 animate-glow-cyan text-black text-4xl md:text-5xl">
-                    <i class="fa-solid fa-window-maximize"></i>
+                <!-- Efecto Ola 1 -->
+                <div class="burbuja-ola ola-1">
+                    <div
+                        class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-cyan-300 flex items-center justify-center mb-6 animate-glow-cyan text-black text-4xl md:text-5xl">
+                        <i class="fa-solid fa-window-maximize"></i>
+                    </div>
                 </div>
-                <h3 class="text-xl md:text-2xl font-black italic">Creacion</h3>
+                <h3 class="text-xl md:text-2xl font-black italic">Creación</h3>
             </div>
-            
+
+            <!-- Burbuja 2: Mantenimiento -->
             <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="200">
-                <div class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-indigo-600 flex items-center justify-center mb-6 animate-glow-indigo text-white text-4xl md:text-5xl">
-                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                <!-- Efecto Ola 2 -->
+                <div class="burbuja-ola ola-2">
+                    <div
+                        class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-indigo-600 flex items-center justify-center mb-6 animate-glow-indigo text-white text-4xl md:text-5xl">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
                 </div>
                 <h3 class="text-xl md:text-2xl font-black italic">Mantenimiento</h3>
             </div>
-            
+
+            <!-- Burbuja 3: Soporte -->
             <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="300">
-                <div class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-cyan-300 flex items-center justify-center mb-6 animate-glow-cyan text-black text-4xl md:text-5xl">
-                    <i class="fa-solid fa-circle-question"></i>
+                <!-- Efecto Ola 3 -->
+                <div class="burbuja-ola ola-3">
+                    <div
+                        class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-cyan-300 flex items-center justify-center mb-6 animate-glow-cyan text-black text-4xl md:text-5xl">
+                        <i class="fa-solid fa-circle-question"></i>
+                    </div>
                 </div>
                 <h3 class="text-xl md:text-2xl font-black italic">Soporte</h3>
             </div>
+
         </div>
     </section>
 
     <!-- SECCIÓN: PROYECTOS -->
-    <section id="proyectos" class="py-24 bg-[#181818] text-center border-t border-[#222222]">
+    <section id="proyectos" class="py-24 bg-[#181818] text-center">
         <h2 class="text-4xl font-black italic uppercase mb-16 tracking-wide" data-aos="fade-up">PROYECTOS</h2>
-        
+
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl">
-            
-            <div class="bg-[#1e1e1e] rounded-3xl p-6 shadow-[0_0_20px_rgba(34,211,238,0.2)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] transition duration-300 border border-gray-800" data-aos="flip-left">
-                <div class="h-48 bg-gray-700 rounded-xl mb-6 flex items-center justify-center overflow-hidden">
-                    <img src="img/emmaa.jpg" alt="Emma Balaguer" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300">
+
+            <!-- Tarjeta 1 -->
+            <div class="group bg-[#1e1e1e] rounded-3xl p-6 border border-gray-800 shadow-lg hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] transform hover:-translate-y-2 transition-all duration-500"
+                data-aos="fade-up" data-aos-delay="100">
+                <!-- Contenedor de Imagen -->
+                <div class="h-48 bg-gray-700 rounded-xl mb-6 flex items-center justify-center overflow-hidden relative">
+                    <img src="img/emmaa.jpg" alt="Centro Educativo Emma Balaguer"
+                        class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
                 </div>
-                <h3 class="text-xl font-bold uppercase mb-4">Centro Educativo</h3>
+
+                <h3
+                    class="text-xl font-bold uppercase mb-4 text-white group-hover:text-cyan-300 transition-colors duration-300">
+                    Centro Educativo</h3>
+
                 <p class="text-gray-400 mb-6 text-sm">
-                    Portal web moderno y visualmente hermoso para un centro educativo, mejorando la experiencia de estudiantes y profesores.
+                    Portal web moderno y visualmente hermoso para un centro educativo, mejorando la experiencia de
+                    estudiantes y profesores.
                 </p>
-                <a href="https://centroemmabalaguerdevallejo.edu.do/" target="_blank" class="inline-block bg-cyan-300 text-black font-bold py-2 px-6 rounded hover:bg-cyan-400 transition">Ver mas</a>
+
+                <a href="https://centroemmabalaguerdevallejo.edu.do/" target="_blank"
+                    class="inline-block bg-cyan-300 text-black font-bold py-2 px-6 rounded-lg hover:bg-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] transition-all duration-300">
+                    Ver más
+                </a>
             </div>
 
-            <div class="bg-[#1e1e1e] rounded-3xl p-6 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition duration-300 border border-gray-800" data-aos="flip-right">
-                 <div class="h-48 bg-gray-700 rounded-xl mb-6 flex items-center justify-center overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="GestiWeb" class="w-full h-full object-cover opacity-60">
+            <!-- Tarjeta 2 -->
+            <div class="group bg-[#1e1e1e] rounded-3xl p-6 border border-gray-800 shadow-lg hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] transform hover:-translate-y-2 transition-all duration-500"
+                data-aos="fade-up" data-aos-delay="200">
+                <!-- Contenedor de Imagen -->
+                <div class="h-48 bg-gray-700 rounded-xl mb-6 flex items-center justify-center overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="GestiWeb"
+                        class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
                 </div>
-                <h3 class="text-xl font-bold uppercase mb-4">GestiWeb</h3>
+
+                <h3
+                    class="text-xl font-bold uppercase mb-4 text-white group-hover:text-cyan-300 transition-colors duration-300">
+                    GestiWeb</h3>
+
                 <p class="text-gray-400 mb-6 text-sm">
-                    Portal web moderno y visualmente hermoso enfocado en la gestion empresarial y de inventario, simple, sencilla y eficiente.
+                    Portal web moderno y visualmente hermoso enfocado en la gestión empresarial y de inventario, simple,
+                    sencilla y eficiente.
                 </p>
-                <a href="#" class="inline-block bg-cyan-300 text-black font-bold py-2 px-6 rounded hover:bg-cyan-400 transition">Ver mas</a>
+
+                <a href="#"
+                    class="inline-block bg-cyan-300 text-black font-bold py-2 px-6 rounded-lg hover:bg-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] transition-all duration-300">
+                    Ver más
+                </a>
             </div>
-            
+
         </div>
-        
-        <div class="mt-12" data-aos="fade-up">
-            <button class="bg-black border border-gray-600 text-white font-bold py-3 px-8 rounded hover:bg-gray-800 transition">Ver todo</button>
+
+        <!-- Botón Ver Todo -->
+        <div class="mt-16" data-aos="fade-up" data-aos-delay="300">
+            <button
+                class="bg-transparent border-2 border-gray-600 text-white font-bold py-3 px-10 rounded-full hover:bg-gray-800 hover:border-gray-500 hover:text-cyan-300 transition-all duration-300">
+                Ver todo
+            </button>
         </div>
     </section>
 
     <!-- SECCIÓN: CONTACTANOS -->
-    <section id="contactanos" class="py-24 bg-[#1e1e1e] relative">
-        <div class="hidden md:block absolute left-0 top-1/2 w-8 h-8 bg-cyan-400"></div>
-        <div class="hidden md:block absolute right-1/4 top-10 w-12 h-12 bg-cyan-400"></div>
-        
-        <div class="container mx-auto px-6 flex flex-col md:flex-row max-w-5xl gap-12 md:gap-16">
-            
-            <div class="md:w-1/2" data-aos="fade-right">
-                <h2 class="text-4xl sm:text-5xl font-black italic uppercase mb-2">Contactanos</h2>
-                <p class="text-gray-400 text-sm mb-10">Para consultas, dudas, sugerencias o mas llene el siguiente formulario o a traves de alguna de nuestras redes sociales</p>
-                
-                <form action="https://formsubmit.co/somosnetsol@gmail.com" method="POST" class="space-y-8">
+    <section id="contactanos" class="py-24 relative overflow-hidden bg-gradient-to-b from-[#181818] to-[#111111]">
+
+        <!-- Luces de fondo ambientales (Reemplazo de los cuadrados) -->
+        <div class="absolute -left-20 top-20 w-72 h-72 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none">
+        </div>
+        <div class="absolute -right-20 bottom-10 w-96 h-96 bg-cyan-400/5 rounded-full blur-[120px] pointer-events-none">
+        </div>
+
+        <div class="container mx-auto px-6 flex flex-col md:flex-row max-w-6xl gap-16 relative z-10 items-center">
+
+            <!-- Columna Izquierda: Formulario -->
+            <div class="md:w-1/2 w-full" data-aos="fade-right">
+                <h2 class="text-5xl sm:text-6xl font-black italic uppercase mb-4 tracking-tighter">
+                    Contáctanos<span class="text-cyan-400">.</span>
+                </h2>
+                <p class="text-gray-400 text-lg mb-10 max-w-md leading-relaxed">
+                    ¿Tienes una idea en mente? Llena el formulario o encuéntranos en nuestras redes. Estamos listos para
+                    crear.
+                </p>
+
+                <form action="https://formsubmit.co/somosnetsol@gmail.com" method="POST" class="space-y-6">
                     <input type="hidden" name="_subject" value="Nuevo mensaje desde la web de NetSol!">
                     <input type="hidden" name="_captcha" value="false">
-                    
-                    <div>
-                        <input type="text" name="Nombre" placeholder="Nombre" required class="input-line">
+
+                    <!-- Inputs Estilizados -->
+                    <div class="relative">
+                        <input type="text" name="Nombre" placeholder="Tu Nombre" required
+                            class="w-full bg-[#1a1a1a] border border-gray-800 text-white px-6 py-4 rounded-xl focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all duration-300 placeholder-gray-600">
                     </div>
-                    <div>
-                        <input type="email" name="Correo" placeholder="Correo" required class="input-line">
+
+                    <div class="relative">
+                        <input type="email" name="Correo" placeholder="Tu Correo Electrónico" required
+                            class="w-full bg-[#1a1a1a] border border-gray-800 text-white px-6 py-4 rounded-xl focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all duration-300 placeholder-gray-600">
                     </div>
-                    <div>
-                        <input type="text" name="Mensaje" placeholder="Mensaje" required class="input-line">
+
+                    <div class="relative">
+                        <textarea name="Mensaje" placeholder="¿Cómo podemos ayudarte?" rows="4" required
+                            class="w-full bg-[#1a1a1a] border border-gray-800 text-white px-6 py-4 rounded-xl focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all duration-300 placeholder-gray-600 resize-none"></textarea>
                     </div>
-                    
-                    <button type="submit" class="w-full bg-[#111111] border border-gray-700 hover:bg-gray-800 text-white font-bold py-3 rounded transition shadow-lg">
-                        Enviar
+
+                    <button type="submit"
+                        class="w-full bg-cyan-400 text-black font-black uppercase tracking-widest py-4 rounded-xl hover:bg-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transform hover:-translate-y-1 transition-all duration-300 flex justify-center items-center gap-3">
+                        Enviar Mensaje <i class="fa-solid fa-paper-plane"></i>
                     </button>
                 </form>
             </div>
-            
-            <div class="md:w-1/2 bg-[#161616] p-8 sm:p-10 rounded-xl border border-gray-800" data-aos="fade-left">
-                <h3 class="text-2xl font-black italic mb-8">Contacto</h3>
-                
-                <div class="space-y-6 text-gray-300 font-semibold break-words">
-                    <div class="flex items-center gap-4 hover:text-cyan-300 transition">
-                        <i class="fa-regular fa-envelope text-xl shrink-0"></i>
-                        <a href="mailto:somosnetsol@gmail.com" class="underline decoration-gray-500">somosnetsol@gmail.com</a>
+
+            <!-- Columna Derecha: Tarjeta de Información -->
+            <div class="md:w-1/2 w-full" data-aos="fade-left">
+                <div
+                    class="bg-gradient-to-br from-[#1a1a1a] to-[#141414] p-10 sm:p-14 rounded-3xl border border-gray-800 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+
+                    <!-- Detalle de diseño dentro de la tarjeta -->
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-cyan-400/5 rounded-bl-full transition-transform duration-700 group-hover:scale-125">
                     </div>
-                    <div class="flex items-center gap-4 hover:text-cyan-300 transition">
-                        <i class="fa-solid fa-phone text-xl shrink-0"></i>
-                        <span>+1 (849) 466-1247</span>
-                    </div>
-                    <div class="flex items-center gap-4 hover:text-cyan-300 transition">
-                        <i class="fa-regular fa-clock text-xl shrink-0"></i>
-                        <span>8:00 AM-6:00 PM</span>
-                    </div>
-                    <div class="flex items-center gap-4 hover:text-cyan-300 transition">
-                        <i class="fa-solid fa-at text-xl shrink-0"></i>
-                        <span>somosnetsol</span>
+
+                    <h3 class="text-3xl font-black italic mb-10 text-white">Información</h3>
+
+                    <div class="space-y-8 text-gray-300 font-medium">
+
+                        <!-- Item de Contacto -->
+                        <a href="mailto:somosnetsol@gmail.com"
+                            class="flex items-center gap-6 group/item hover:text-white transition-colors duration-300">
+                            <div
+                                class="w-14 h-14 rounded-full bg-[#111] border border-gray-800 flex items-center justify-center text-cyan-400 group-hover/item:bg-cyan-400 group-hover/item:text-black transition-all duration-300 shadow-lg">
+                                <i class="fa-regular fa-envelope text-xl"></i>
+                            </div>
+                            <span class="text-lg break-all">somosnetsol@gmail.com</span>
+                        </a>
+
+                        <!-- Item de Contacto -->
+                        <div class="flex items-center gap-6 group/item hover:text-white transition-colors duration-300">
+                            <div
+                                class="w-14 h-14 rounded-full bg-[#111] border border-gray-800 flex items-center justify-center text-cyan-400 group-hover/item:bg-cyan-400 group-hover/item:text-black transition-all duration-300 shadow-lg">
+                                <i class="fa-solid fa-phone text-xl"></i>
+                            </div>
+                            <span class="text-lg">+1 (849) 466-1247</span>
+                        </div>
+
+                        <!-- Item de Contacto -->
+                        <div class="flex items-center gap-6 group/item hover:text-white transition-colors duration-300">
+                            <div
+                                class="w-14 h-14 rounded-full bg-[#111] border border-gray-800 flex items-center justify-center text-cyan-400 group-hover/item:bg-cyan-400 group-hover/item:text-black transition-all duration-300 shadow-lg">
+                                <i class="fa-regular fa-clock text-xl"></i>
+                            </div>
+                            <span class="text-lg">8:00 AM - 6:00 PM</span>
+                        </div>
+
+                        <!-- Item de Contacto -->
+                        <div class="flex items-center gap-6 group/item hover:text-white transition-colors duration-300">
+                            <div
+                                class="w-14 h-14 rounded-full bg-[#111] border border-gray-800 flex items-center justify-center text-cyan-400 group-hover/item:bg-cyan-400 group-hover/item:text-black transition-all duration-300 shadow-lg">
+                                <i class="fa-solid fa-at text-xl"></i>
+                            </div>
+                            <span class="text-lg uppercase tracking-wider font-bold">somosnetsol</span>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="bg-[#111111] py-8 border-t border-gray-800">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            
+        <div
+            class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+
             <div class="flex flex-col md:flex-row items-center gap-4 md:gap-2 mb-4 md:mb-0">
                 <div class="flex items-center gap-2">
                     <div class="flex gap-1">
@@ -227,13 +432,15 @@
                     </div>
                     <span class="text-lg font-bold tracking-widest uppercase">NetSol</span>
                 </div>
-                
+
                 <div class="flex gap-6 md:ml-6 text-xl mt-2 md:mt-0">
-                    <a href="https://www.instagram.com/neetsol?igsh=MWFrdW5zM2xjdThhdw==" class="hover:text-cyan-400 transition"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/share/1CbZXqxJZi/" class="hover:text-cyan-400 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/neetsol?igsh=MWFrdW5zM2xjdThhdw=="
+                        class="hover:text-cyan-400 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1CbZXqxJZi/" class="hover:text-cyan-400 transition"><i
+                            class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
-            
+
             <div class="text-xs text-gray-600 font-bold uppercase tracking-wider mt-2 md:mt-0">
                 todos los derechos reservados. somosnetsol@
             </div>
@@ -245,4 +452,5 @@
     <!-- TU ARCHIVO JAVASCRIPT PERSONALIZADO -->
     <script src="main.js"></script>
 </body>
+
 </html>
