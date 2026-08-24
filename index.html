@@ -4,414 +4,1173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NetSol - Crea tu sitio web</title>
+    <title>NetSol - Soluciones de Software a Tu Medida | Desarrollo Web, Apps & Sistemas</title>
+    <meta name="description" content="NetSol: Creamos software a tu medida. Páginas web modernas, aplicaciones móviles y sistemas eficientes para impulsar tu negocio.">
+    <meta name="keywords" content="NetSol, somosnetsol, desarrollo web, aplicaciones móviles, software a medida, sistemas web, República Dominicana">
+    <meta name="theme-color" content="#090a0f">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preconnect para recursos externos (Mejora de Rendimiento) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome para Iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Open Graph / Redes Sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NetSol - Creamos Software a Tu Medida">
+    <meta property="og:description" content="Transformamos tus ideas en código de alto rendimiento. Desarrollo web, móvil y sistemas empresariales.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#090a0f',
+                            card: '#131622',
+                            cyan: '#00f2fe',
+                            blue: '#4facfe',
+                            indigo: '#6366f1',
+                            green: '#10b981'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'Montserrat', 'sans-serif'],
+                        tech: ['Space Grotesk', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <!-- AOS CSS para Animaciones -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- TU ARCHIVO CSS PERSONALIZADO -->
+    <!-- Archivo CSS Personalizado -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="antialiased">
+<body class="bg-[#090a0f] text-slate-100 antialiased relative min-h-screen overflow-x-hidden">
 
-    <!-- NAVBAR -->
-    <nav class="fixed w-full top-0 z-50 transition-all duration-500 bg-[#0a0a0a]/40 backdrop-blur-2xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="flex items-center justify-between h-16 relative">
+    <!-- CANVAS DE PARTÍCULAS INTERACTIVAS -->
+    <canvas id="particles-canvas"></canvas>
 
-                <!-- Logo Animado Ajustado -->
-                <a href="#" class="group flex items-center gap-2 z-50">
-                    <div class="w-9 h-9 bg-gradient-to-tr from-cyan-400 to-cyan-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-[0_0_20px_rgba(34,211,238,0.5)] group-hover:rotate-6 transition-all duration-300">
-                        <span class="text-black font-black text-lg italic">N</span>
+    <!-- NAVBAR NAVEGACIÓN -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300 glass-nav" id="main-header">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo Animado -->
+                <a href="#inicio" class="group flex items-center gap-3 z-50" aria-label="NetSol Inicio">
+                    <div class="relative w-10 h-10 bg-gradient-to-tr from-cyan-400 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-[0_0_25px_rgba(0,242,254,0.6)] group-hover:rotate-6 transition-all duration-300">
+                        <span class="text-black font-black text-xl italic font-heading">N</span>
+                        <span class="absolute -top-1 -right-1 w-3 h-3 bg-cyan-300 rounded-full animate-ping opacity-75"></span>
+                        <span class="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full"></span>
                     </div>
-                    <span class="text-xl font-black italic tracking-widest text-white transition-colors">
-                        NET<span class="text-cyan-400">SOL</span>
-                    </span>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black italic tracking-widest text-white font-heading leading-none">
+                            NET<span class="text-cyan-400">SOL</span>
+                        </span>
+                        <span class="text-[10px] text-gray-400 font-bold tracking-widest uppercase font-tech mt-0.5">Software Solutions</span>
+                    </div>
                 </a>
 
-                <!-- Enlaces de Navegación (Desktop) -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#inicio" class="text-gray-300 text-sm uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors duration-300 relative group py-1">
-                        Inicio
-                        <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-400 transition-all duration-300 ease-out group-hover:w-full group-hover:left-0 rounded-full"></span>
-                    </a>
-                    <a href="#servicios" class="text-gray-300 text-sm uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors duration-300 relative group py-1">
-                        Servicios
-                        <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-400 transition-all duration-300 ease-out group-hover:w-full group-hover:left-0 rounded-full"></span>
-                    </a>
-                    <a href="#proyectos" class="text-gray-300 text-sm uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors duration-300 relative group py-1">
-                        Proyectos
-                        <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-400 transition-all duration-300 ease-out group-hover:w-full group-hover:left-0 rounded-full"></span>
-                    </a>
+                <!-- Estado en Vivo (Desktop) -->
+                <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/20 text-xs text-cyan-300">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="font-medium">Disponibles para nuevos proyectos</span>
                 </div>
+
+                <!-- Enlaces de Navegación (Desktop) -->
+                <nav class="hidden md:flex items-center space-x-7" id="desktop-nav">
+                    <a href="#inicio" class="nav-link text-gray-300 text-xs uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors duration-300 relative py-1">
+                        Inicio
+                    </a>
+                    <a href="#servicios" class="nav-link text-gray-300 text-xs uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors duration-300 relative py-1">
+                        Servicios
+                    </a>
+                    <a href="#webs-portables" class="nav-link text-gray-300 text-xs uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors duration-300 relative py-1">
+                        Webs Portables
+                    </a>
+                    <a href="#cotizador" class="nav-link text-gray-300 text-xs uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors duration-300 relative py-1 flex items-center gap-1.5">
+                        <i class="fa-solid fa-calculator text-cyan-400 text-xs"></i> Cotizador
+                    </a>
+                    <a href="#proyectos" class="nav-link text-gray-300 text-xs uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors duration-300 relative py-1">
+                        Proyectos
+                    </a>
+                    <a href="#faq" class="nav-link text-gray-300 text-xs uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors duration-300 relative py-1">
+                        FAQ
+                    </a>
+                </nav>
 
                 <!-- Botón CTA (Desktop) -->
-                <div class="hidden md:block">
-                    <a href="#contactanos" class="relative inline-flex items-center justify-center px-6 py-2 text-xs font-bold tracking-widest text-cyan-400 uppercase bg-transparent border border-cyan-400/50 rounded-full hover:bg-cyan-400 hover:text-black hover:shadow-[0_0_20px_rgba(34,211,238,0.6)] hover:border-transparent transition-all duration-500">
-                        Contáctanos
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="#contactanos" class="btn-primary-glow px-6 py-2.5 text-xs font-black tracking-widest uppercase rounded-full flex items-center gap-2">
+                        <span>Contáctanos</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
 
-                <!-- Botón Menú Hamburguesa (Móvil) - ID AGREGADO -->
-                <div class="md:hidden z-50">
-                    <button id="btn-menu" class="text-gray-300 hover:text-cyan-400 focus:outline-none transition-colors p-1">
-                        <!-- Cambiado a fa-bars para que coincida exactamente con tu JS -->
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                <!-- Botón Menú Hamburguesa (Móvil) -->
+                <div class="md:hidden flex items-center gap-3 z-50">
+                    <button id="btn-menu" class="w-11 h-11 rounded-xl bg-white/10 border border-white/15 text-gray-200 hover:text-cyan-400 focus:outline-none flex items-center justify-center transition-all shadow-md active:scale-95" aria-label="Abrir menú de navegación">
+                        <i class="fa-solid fa-bars text-xl" id="menu-toggle-icon"></i>
                     </button>
                 </div>
 
             </div>
         </div>
 
-        <!-- CONTENEDOR DEL MENÚ MÓVIL (NUEVO) -->
-        <div id="menu-links" class="hidden flex-col items-center bg-[#0a0a0a]/95 backdrop-blur-2xl absolute top-16 left-0 w-full py-8 space-y-6 border-b border-white/5 md:hidden shadow-2xl">
-            <a href="#inicio" class="menu-item text-gray-300 text-sm uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors">Inicio</a>
-            <a href="#servicios" class="menu-item text-gray-300 text-sm uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors">Servicios</a>
-            <a href="#proyectos" class="menu-item text-gray-300 text-sm uppercase tracking-widest font-bold hover:text-cyan-300 transition-colors">Proyectos</a>
-            <a href="#contactanos" class="menu-item px-6 py-2 text-xs font-bold tracking-widest text-cyan-400 uppercase border border-cyan-400/50 rounded-full hover:bg-cyan-400 hover:text-black transition-all">Contáctanos</a>
+        <!-- CONTENEDOR DEL MENÚ MÓVIL (DRAWER 100% OPACO SIN TRANSPARENCIAS MOLESTAS) -->
+        <div id="menu-links" class="mobile-nav-drawer md:hidden py-6 px-6 shadow-2xl flex flex-col justify-between">
+            <div class="space-y-3">
+                <div class="flex items-center justify-between pb-3 mb-2 border-b border-white/10">
+                    <span class="text-xs uppercase tracking-widest text-cyan-400 font-bold font-tech">Menú Principal</span>
+                    <span class="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Abierto
+                    </span>
+                </div>
+
+                <a href="#inicio" class="menu-item mobile-nav-link">
+                    <span class="flex items-center gap-3"><i class="fa-solid fa-house w-5 text-cyan-400"></i> Inicio</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                </a>
+                <a href="#servicios" class="menu-item mobile-nav-link">
+                    <span class="flex items-center gap-3"><i class="fa-solid fa-layer-group w-5 text-cyan-400"></i> Servicios</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                </a>
+                <a href="#webs-portables" class="menu-item mobile-nav-link">
+                    <span class="flex items-center gap-3"><i class="fa-solid fa-mobile-screen-button w-5 text-cyan-400"></i> Webs Portables</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                </a>
+                <a href="#cotizador" class="menu-item mobile-nav-link">
+                    <span class="flex items-center gap-3"><i class="fa-solid fa-calculator w-5 text-cyan-400"></i> Cotizador Express</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                </a>
+                <a href="#proyectos" class="menu-item mobile-nav-link">
+                    <span class="flex items-center gap-3"><i class="fa-solid fa-laptop-code w-5 text-cyan-400"></i> Proyectos</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                </a>
+                <a href="#faq" class="menu-item mobile-nav-link">
+                    <span class="flex items-center gap-3"><i class="fa-solid fa-circle-question w-5 text-cyan-400"></i> Preguntas Frecuentes</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                </a>
+            </div>
+
+            <!-- Botones de Acción Móvil -->
+            <div class="pt-6 mt-4 border-t border-white/10 space-y-3 pb-6">
+                <a href="#contactanos" class="menu-item btn-primary-glow block w-full text-center py-3.5 text-xs font-black tracking-widest uppercase rounded-xl shadow-lg">
+                    Iniciar Contacto
+                </a>
+                <a href="https://wa.me/18494661247" target="_blank" class="block w-full text-center py-3 text-xs font-bold tracking-widest uppercase rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500 hover:text-black transition-all">
+                    <i class="fa-brands fa-whatsapp text-sm mr-1"></i> WhatsApp Directo
+                </a>
+            </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- SECCIÓN: PORTADA -->
-    <section id="inicio" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <!-- Fondo -->
-        <div class="absolute inset-0 z-0">
-            <img src="img/fondo negro.jpg" alt="Fondo" class="w-full h-full object-cover opacity-30">
-            <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#121212] to-transparent"></div>
-        </div>
+    <!-- SECCIÓN: HERO / PORTADA -->
+    <section id="inicio" class="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden cyber-grid-bg">
+        <!-- Luces Ambientales de Fondo -->
+        <div class="absolute top-1/4 left-10 w-96 h-96 bg-cyan-500/15 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-[500px] h-[500px] bg-indigo-600/15 rounded-full blur-[160px] pointer-events-none"></div>
+        <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#090a0f] to-transparent pointer-events-none"></div>
 
-        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 max-w-7xl">
+        <div class="container mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 max-w-7xl">
 
-            <!-- Columna Izquierda -->
-            <div class="md:w-1/2 text-center md:text-left z-20 mt-10 md:mt-0" data-aos="fade-right" data-aos-duration="1000">
-                <h1 class="text-5xl sm:text-6xl md:text-7xl font-black italic uppercase leading-tight mb-6">
+            <!-- Columna Izquierda: Información Principal -->
+            <div class="lg:w-1/2 text-center lg:text-left z-20" data-aos="fade-right" data-aos-duration="900">
+
+                <!-- Badge de Innovación -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-950/40 border border-cyan-400/30 text-cyan-300 text-xs font-bold tracking-wider uppercase mb-6 shadow-[0_0_15px_rgba(0,242,254,0.15)]">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                    <span>Desarrollo de Software & Soluciones Digitales</span>
+                </div>
+
+                <!-- Título Cinético -->
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black italic uppercase leading-[1.08] mb-6 tracking-tight">
                     CREAMOS <br>
-                    <span class="text-cyan-400">SOFTWARE</span><br>
+                    <span class="gradient-text-animated">SOFTWARE</span><br>
                     A TU MEDIDA
                 </h1>
-                <p class="text-gray-300 text-lg md:text-xl max-w-lg mx-auto md:mx-0 font-light leading-relaxed mb-10">
-                    Transformamos tus ideas en código. Desarrollamos páginas web, aplicaciones móviles y sistemas eficientes para impulsar tu negocio.
+
+                <!-- Descripción -->
+                <p class="text-gray-300 text-base sm:text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed mb-8">
+                    Transformamos tus ideas en código. Desarrollamos páginas web, aplicaciones móviles y sistemas eficientes para impulsar tu negocio al siguiente nivel tecnológico.
                 </p>
-                <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                    <a href="#contactanos" class="px-8 py-3 bg-cyan-400 text-black font-bold uppercase tracking-widest rounded hover:bg-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-300">
-                        Iniciar Proyecto
+
+                <!-- Botones CTA -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10">
+                    <a href="#cotizador" class="btn-primary-glow w-full sm:w-auto px-8 py-4 text-xs font-black uppercase tracking-widest rounded-xl flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-bolt"></i> Iniciar Proyecto
+                    </a>
+                    <a href="#proyectos" class="btn-secondary-glow w-full sm:w-auto px-8 py-4 text-xs font-bold uppercase tracking-widest rounded-xl flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-eye"></i> Ver Proyectos
                     </a>
                 </div>
-            </div>
 
-            <!-- Columna Derecha: Ecosistema 3D (CORREGIDO PARA MÓVILES) -->
-            <!-- Se agregó mt-24 y mb-16 en móviles para dar espacio a las tarjetas absolutas -->
-            <div class="md:w-1/2 flex justify-center relative z-10 w-full mt-24 mb-16 md:mt-0 md:mb-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-
-                <!-- Tarjeta 1: Web -->
-                <!-- Se quitó 'hidden sm:block', se ajustó la posición y se usó scale-75 en móviles -->
-                <div class="absolute -top-12 left-0 md:-left-4 z-30 transform scale-[0.65] sm:scale-100 origin-top-left">
-                    <div class="burbuja-ola ola-1 bg-[#1a1a1a] border border-gray-800 p-4 rounded-xl shadow-xl">
-                        <div class="flex items-center gap-4">
-                            <div class="text-cyan-400 text-2xl"><i class="fa-solid fa-globe"></i></div>
-                            <div>
-                                <p class="text-white font-bold text-sm">Web</p>
-                                <p class="text-gray-500 text-xs">Interfaces Modernas</p>
-                            </div>
-                        </div>
+                <!-- Mini Métricas de Confianza -->
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 max-w-lg mx-auto lg:mx-0 text-left">
+                    <div>
+                        <p class="text-2xl font-black text-cyan-400 font-heading">100%</p>
+                        <p class="text-xs text-gray-400 uppercase font-medium">A tu Medida</p>
                     </div>
-                </div>
-
-                <!-- Tarjeta 2: Sistemas -->
-                <!-- Se quitó 'hidden sm:block', se ajustó la posición y se usó scale-75 en móviles -->
-                <div class="absolute top-1/2 -right-4 md:-right-8 z-30 transform -translate-y-1/2 scale-[0.65] sm:scale-100 origin-right">
-                    <div class="burbuja-ola ola-3 bg-[#1a1a1a] border border-gray-800 p-4 rounded-xl shadow-xl">
-                        <div class="flex items-center gap-4">
-                            <div class="text-cyan-400 text-2xl"><i class="fa-solid fa-database"></i></div>
-                            <div>
-                                <p class="text-white font-bold text-sm">Sistemas</p>
-                                <p class="text-gray-500 text-xs">Escalables & Seguros</p>
-                            </div>
-                        </div>
+                    <div>
+                        <p class="text-2xl font-black text-indigo-400 font-heading">Multi</p>
+                        <p class="text-xs text-gray-400 uppercase font-medium">Plataforma</p>
                     </div>
-                </div>
-
-                <!-- Tarjeta 3: Apps -->
-                <!-- Se ajustó la posición inferior para que no se corte y scale-75 en móviles -->
-                <div class="absolute -bottom-12 left-4 md:left-20 z-40 transform scale-[0.65] sm:scale-100 origin-bottom-left">
-                    <div class="burbuja-ola ola-2 bg-[#1a1a1a] border border-gray-800 p-4 rounded-xl shadow-xl">
-                        <div class="flex items-center gap-4">
-                            <div class="text-cyan-400 text-2xl"><i class="fa-solid fa-mobile-screen"></i></div>
-                            <div>
-                                <p class="text-white font-bold text-sm">Móvil</p>
-                                <p class="text-gray-500 text-xs">iOS & Android</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contenedor Principal (Laptop + Brillo) -->
-                <div class="relative w-full flex justify-center items-center">
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 md:w-96 h-64 md:h-96 bg-cyan-400/10 rounded-full blur-[80px] z-0 pointer-events-none"></div>
-                    <div class="relative z-10 w-[85%] sm:w-[90%] max-w-2xl md:max-w-3xl">
-                        <img src="img/laptop.png" alt="Desarrollo Multiplataforma Mockup" class="w-full transform scale-110 md:scale-125 blend-screen drop-shadow-2xl">
+                    <div>
+                        <p class="text-2xl font-black text-emerald-400 font-heading">24/7</p>
+                        <p class="text-xs text-gray-400 uppercase font-medium">Soporte Continuo</p>
                     </div>
                 </div>
 
             </div>
+
+            <!-- Columna Derecha: Ecosistema 3D Interactivo -->
+            <div class="lg:w-1/2 flex justify-center relative z-10 w-full mt-12 lg:mt-0" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+
+                <div class="relative w-full max-w-lg sm:max-w-xl lg:max-w-none flex items-center justify-center" id="hero-3d-wrapper">
+
+                    <!-- Resplandor central -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-cyan-400/20 rounded-full blur-[100px] pointer-events-none"></div>
+
+                    <!-- Tarjeta Flotante 1: Web -->
+                    <div class="absolute -top-6 left-0 sm:-left-6 z-30 transform scale-90 sm:scale-100 animate-float-1">
+                        <div class="glass-card p-4 sm:p-5 rounded-2xl shadow-2xl border border-cyan-500/30 flex items-center gap-4 bg-slate-900/90 backdrop-blur-xl">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-black text-xl shadow-lg shadow-cyan-500/30">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <p class="text-white font-bold text-sm sm:text-base">Web</p>
+                                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                                </div>
+                                <p class="text-cyan-300/80 text-xs font-tech">Interfaces Modernas & UX</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Flotante 2: Sistemas -->
+                    <div class="absolute top-1/2 -right-2 sm:-right-8 -translate-y-1/2 z-30 transform scale-90 sm:scale-100 animate-float-2">
+                        <div class="glass-card p-4 sm:p-5 rounded-2xl shadow-2xl border border-indigo-500/30 flex items-center gap-4 bg-slate-900/90 backdrop-blur-xl">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xl shadow-lg shadow-indigo-500/30">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <p class="text-white font-bold text-sm sm:text-base">Sistemas</p>
+                                    <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                                </div>
+                                <p class="text-indigo-300/80 text-xs font-tech">Escalables & Seguros</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Flotante 3: Móvil -->
+                    <div class="absolute -bottom-8 left-6 sm:left-16 z-30 transform scale-90 sm:scale-100 animate-float-3">
+                        <div class="glass-card p-4 sm:p-5 rounded-2xl shadow-2xl border border-cyan-500/30 flex items-center gap-4 bg-slate-900/90 backdrop-blur-xl">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-300 to-emerald-500 flex items-center justify-center text-black text-xl shadow-lg shadow-cyan-500/30">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <p class="text-white font-bold text-sm sm:text-base">Móvil</p>
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                </div>
+                                <p class="text-cyan-300/80 text-xs font-tech">iOS & Android Apps</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Laptop Mockup Central Optimizado con fetchpriority -->
+                    <div class="relative z-10 w-[90%] sm:w-[95%]">
+                        <img src="img/laptop.png" alt="Desarrollo Multiplataforma NetSol" width="800" height="500" fetchpriority="high" decoding="async" class="w-full transform scale-105 sm:scale-110 drop-shadow-[0_20px_50px_rgba(0,242,254,0.25)] blend-screen">
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
     </section>
 
     <!-- SECCIÓN: WEBS PORTABLES -->
-    <section id="webs-portables" class="py-24 relative overflow-hidden bg-gradient-to-b from-[#121212] to-[#181818]">
+    <section id="webs-portables" class="py-24 relative overflow-hidden bg-gradient-to-b from-[#090a0f] via-[#0d0f18] to-[#090a0f]">
 
-        <!-- Esfera de luz 1 (Animación ola-1) -->
-        <div
-            class="burbuja-ola ola-1 absolute top-20 left-0 w-72 h-72 bg-cyan-400 rounded-full mix-blend-screen filter blur-[120px] opacity-30">
+        <!-- Esferas de luz ambiental -->
+        <div class="burbuja-ola ola-1 absolute top-10 left-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="burbuja-ola ola-3 absolute bottom-0 right-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 max-w-6xl">
+            <div class="glass-card rounded-3xl p-8 sm:p-14 shadow-2xl border border-white/10 relative overflow-hidden">
+
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+
+                    <!-- Texto Descriptivo -->
+                    <div class="lg:w-1/2 text-center lg:text-left" data-aos="fade-right">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs font-bold tracking-wider uppercase mb-4">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            <span>Diseño Multiplataforma</span>
+                        </div>
+
+                        <h2 class="text-3xl sm:text-5xl font-black italic uppercase leading-tight mb-6">
+                            <span class="gradient-text-cyan">WEBS</span><br>PORTABLES
+                        </h2>
+
+                        <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-8">
+                            Desarrollamos aplicaciones accesibles desde cualquier dispositivo, mejorando significativamente su alcance y permitiendo que todos puedan usarlas fácilmente con máxima velocidad y comodidad.
+                        </p>
+
+                        <!-- Puntos Clave de Alto Impacto -->
+                        <div class="space-y-4 text-left max-w-md mx-auto lg:mx-0 mb-8">
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-cyan-400/20 text-cyan-300 flex items-center justify-center text-xs mt-1 shrink-0">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <p class="text-sm text-gray-300"><strong class="text-white font-bold">100% Responsivo:</strong> Adaptación perfecta a smartphones, tablets y pantallas de escritorio.</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-cyan-400/20 text-cyan-300 flex items-center justify-center text-xs mt-1 shrink-0">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <p class="text-sm text-gray-300"><strong class="text-white font-bold">Velocidad Ultrarrápida:</strong> Código ligero y optimizado para tiempos de carga inferiores a 1 segundo.</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-cyan-400/20 text-cyan-300 flex items-center justify-center text-xs mt-1 shrink-0">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <p class="text-sm text-gray-300"><strong class="text-white font-bold">Experiencia Táctil Nativa:</strong> Gestos fluidos y navegación intuitiva estilo aplicación móvil.</p>
+                            </div>
+                        </div>
+
+                        <a href="#cotizador" class="btn-primary-glow inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider">
+                            <span>Quiero mi web móvil</span>
+                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </a>
+                    </div>
+
+                    <!-- Visual del Celular -->
+                    <div class="lg:w-1/2 flex justify-center relative" data-aos="fade-left">
+                        <div class="relative flex items-center justify-center">
+                            <!-- Halo de Luz Neón -->
+                            <div class="absolute w-64 h-64 bg-cyan-400/20 rounded-full blur-[80px] pointer-events-none"></div>
+
+                            <!-- Badge Flotante de Rendimiento -->
+                            <div class="absolute -top-4 -right-4 sm:right-6 glass-card p-3 rounded-xl border border-emerald-500/40 shadow-xl flex items-center gap-3 z-20 bg-slate-900/90 animate-float-1">
+                                <div class="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm font-bold">
+                                    99%
+                                </div>
+                                <div>
+                                    <p class="text-white font-bold text-xs">Mobile Score</p>
+                                    <p class="text-emerald-400 text-[10px] font-tech">Optimizado SEO & Core Vitals</p>
+                                </div>
+                            </div>
+
+                            <img src="img/celular.png" alt="App Mobile Mockup NetSol" width="350" height="550" loading="lazy" decoding="async" class="w-60 sm:w-72 md:w-80 blend-screen transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <!-- Esfera de luz 2 (Animación ola-3 para que se mueva en distinto tiempo) -->
-        <div
-            class="burbuja-ola ola-3 absolute bottom-0 right-10 w-96 h-96 bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px] opacity-30">
-        </div>
+    <!-- SECCIÓN: SERVICIOS -->
+    <section id="servicios" class="py-24 bg-[#090a0f] relative">
+        <div class="container mx-auto px-6 max-w-7xl">
 
-        <div
-            class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-center bg-[#1a1a1a] rounded-3xl p-8 md:p-16 shadow-2xl max-w-6xl">
-
-            <div class="md:w-1/2 mb-12 md:mb-0 text-center md:text-left z-20" data-aos="fade-right">
-                <h2 class="text-4xl sm:text-5xl md:text-6xl font-black italic uppercase leading-none mb-6">
-                    <span class="text-cyan-300 text-shadow">WEBS</span><br>PORTABLES
+            <!-- Cabecera de Sección -->
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 text-xs font-bold tracking-wider uppercase mb-4">
+                    <i class="fa-solid fa-cubes"></i>
+                    <span>Nuestra Especialidad</span>
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-black italic uppercase tracking-tight mb-4 font-heading">
+                    NUESTROS <span class="gradient-text-cyan">SERVICIOS</span>
                 </h2>
-                <p class="text-gray-300 text-lg md:text-xl md:pr-12">
-                    Desarrollamos aplicaciones accesibles desde cualquier dispositivo, mejorando significativamente su
-                    alcance y permitiendo que todos puedan usarlas fácilmente.
+                <p class="text-gray-400 text-base sm:text-lg">
+                    Soluciones tecnológicas integrales diseñadas con los más altos estándares de rendimiento, estética y seguridad.
                 </p>
             </div>
 
-            <div class="md:w-1/2 flex justify-center z-10" data-aos="fade-left">
-                <img src="img/celular.png" alt="App Mobile Mockup"
-                    class="w-56 sm:w-72 md:w-96 blend-screen transform rotate-3 md:scale-[1.75] transition duration-500 mt-6 md:mt-0">
+            <!-- Bento Grid de Servicios -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Servicio 1: Creación -->
+                <div class="glass-card glass-card-spotlight rounded-3xl p-8 flex flex-col justify-between group hover:-translate-y-2 transition-all duration-300 border border-white/10" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <!-- Icono con efecto Ola 1 -->
+                        <div class="burbuja-ola ola-1 flex justify-center md:justify-start mb-6">
+                            <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-cyan-400 to-blue-500 flex items-center justify-center text-black text-3xl shadow-[0_0_30px_rgba(0,242,254,0.4)] group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-window-maximize"></i>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-black italic mb-4 text-white group-hover:text-cyan-300 transition-colors font-heading">
+                            Creación
+                        </h3>
+
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Diseño y desarrollo integral de páginas web, tiendas online, aplicaciones móviles y sistemas personalizados con código limpio y escalable.
+                        </p>
+
+                        <!-- Tech Badges -->
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-300 font-tech">Webs Corporativas</span>
+                            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-300 font-tech">E-Commerce</span>
+                            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-300 font-tech">Apps iOS/Android</span>
+                            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-300 font-tech">Sistemas SaaS</span>
+                        </div>
+                    </div>
+
+                    <a href="#cotizador" class="btn-secondary-glow text-center py-3 rounded-xl text-xs font-bold uppercase tracking-wider block group-hover:bg-cyan-400 group-hover:text-black group-hover:border-cyan-400 transition-all">
+                        Cotizar Creación <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Servicio 2: Mantenimiento -->
+                <div class="glass-card glass-card-spotlight rounded-3xl p-8 flex flex-col justify-between group hover:-translate-y-2 transition-all duration-300 border border-white/10" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <!-- Icono con efecto Ola 2 -->
+                        <div class="burbuja-ola ola-2 flex justify-center md:justify-start mb-6">
+                            <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white text-3xl shadow-[0_0_30px_rgba(99,102,241,0.4)] group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-black italic mb-4 text-white group-hover:text-indigo-300 transition-colors font-heading">
+                            Mantenimiento
+                        </h3>
+
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Optimización continua, auditorías de seguridad, actualización de dependencias y copias de seguridad para que tu plataforma siempre funcione al 100%.
+                        </p>
+
+                        <!-- Tech Badges -->
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-300 font-tech">Auditorías de Código</span>
+                            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-300 font-tech">Seguridad SSL</span>
+                            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-300 font-tech">Backups Automáticos</span>
+                            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-300 font-tech">Velocidad & SEO</span>
+                        </div>
+                    </div>
+
+                    <a href="#cotizador" class="btn-secondary-glow text-center py-3 rounded-xl text-xs font-bold uppercase tracking-wider block group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-500 transition-all">
+                        Cotizar Mantenimiento <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Servicio 3: Soporte -->
+                <div class="glass-card glass-card-spotlight rounded-3xl p-8 flex flex-col justify-between group hover:-translate-y-2 transition-all duration-300 border border-white/10" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <!-- Icono con efecto Ola 3 -->
+                        <div class="burbuja-ola ola-3 flex justify-center md:justify-start mb-6">
+                            <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-cyan-300 to-emerald-400 flex items-center justify-center text-black text-3xl shadow-[0_0_30px_rgba(0,242,254,0.4)] group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-black italic mb-4 text-white group-hover:text-cyan-300 transition-colors font-heading">
+                            Soporte
+                        </h3>
+
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Asistencia técnica experta, resolución ágil de incidencias y asesoría personalizada para resolver cualquier duda o integrar nuevas funcionalidades.
+                        </p>
+
+                        <!-- Tech Badges -->
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-300 font-tech">Atención Inmediata</span>
+                            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-300 font-tech">Resolución de Bugs</span>
+                            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-300 font-tech">Asesoría Técnica</span>
+                            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-300 font-tech">Escalabilidad</span>
+                        </div>
+                    </div>
+
+                    <a href="#cotizador" class="btn-secondary-glow text-center py-3 rounded-xl text-xs font-bold uppercase tracking-wider block group-hover:bg-cyan-400 group-hover:text-black group-hover:border-cyan-400 transition-all">
+                        Solicitar Soporte <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: NUEVA CALCULADORA INTERACTIVA DE PRESUPUESTO / COTIZADOR -->
+    <section id="cotizador" class="py-24 relative overflow-hidden bg-gradient-to-b from-[#090a0f] via-[#0d0f1a] to-[#090a0f]">
+        <!-- Fondo de Luz -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+
+            <div class="text-center max-w-3xl mx-auto mb-14" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 text-xs font-bold tracking-wider uppercase mb-4">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Calculadora Inteligente</span>
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-black italic uppercase tracking-tight mb-4 font-heading">
+                    COTIZADOR <span class="gradient-text-cyan">INTERACTIVO</span>
+                </h2>
+                <p class="text-gray-400 text-base sm:text-lg">
+                    Personaliza tu solución, obtén un estimado instantáneo y envíanos la propuesta con 1 clic por WhatsApp.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 sm:p-12 border border-white/10 shadow-2xl" data-aos="zoom-in">
+
+                <!-- Paso 1: Tipo de Proyecto -->
+                <div class="mb-10">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2 font-heading">
+                        <span class="w-7 h-7 rounded-lg bg-cyan-400 text-black flex items-center justify-center text-xs font-black">1</span>
+                        ¿Qué tipo de solución necesitas?
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="project-type-container">
+                        <div class="calc-option-card active p-4 rounded-2xl flex flex-col justify-between" data-type="Landing Page" data-time="3 a 7 días hábiles">
+                            <div class="flex items-center justify-between mb-2">
+                                <i class="fa-solid fa-file-lines text-2xl text-cyan-400"></i>
+                                <span class="check-icon w-5 h-5 rounded-full bg-cyan-400 text-black text-xs flex items-center justify-center"><i class="fa-solid fa-check"></i></span>
+                            </div>
+                            <p class="font-bold text-white text-sm">Landing Page</p>
+                            <p class="text-xs text-gray-400">Alta conversión & rápida</p>
+                        </div>
+
+                        <div class="calc-option-card p-4 rounded-2xl flex flex-col justify-between" data-type="Sitio Web Corporativo" data-time="7 a 14 días hábiles">
+                            <div class="flex items-center justify-between mb-2">
+                                <i class="fa-solid fa-globe text-2xl text-cyan-400"></i>
+                                <span class="check-icon w-5 h-5 rounded-full bg-cyan-400 text-black text-xs flex items-center justify-center opacity-0"><i class="fa-solid fa-check"></i></span>
+                            </div>
+                            <p class="font-bold text-white text-sm">Web Corporativa</p>
+                            <p class="text-xs text-gray-400">Multi-sección & catálogo</p>
+                        </div>
+
+                        <div class="calc-option-card p-4 rounded-2xl flex flex-col justify-between" data-type="Tienda E-Commerce" data-time="14 a 21 días hábiles">
+                            <div class="flex items-center justify-between mb-2">
+                                <i class="fa-solid fa-cart-shopping text-2xl text-cyan-400"></i>
+                                <span class="check-icon w-5 h-5 rounded-full bg-cyan-400 text-black text-xs flex items-center justify-center opacity-0"><i class="fa-solid fa-check"></i></span>
+                            </div>
+                            <p class="font-bold text-white text-sm">Tienda E-Commerce</p>
+                            <p class="text-xs text-gray-400">Venta online & pagos</p>
+                        </div>
+
+                        <div class="calc-option-card p-4 rounded-2xl flex flex-col justify-between" data-type="Sistema de Gestión / ERP" data-time="15 a 30 días hábiles">
+                            <div class="flex items-center justify-between mb-2">
+                                <i class="fa-solid fa-database text-2xl text-cyan-400"></i>
+                                <span class="check-icon w-5 h-5 rounded-full bg-cyan-400 text-black text-xs flex items-center justify-center opacity-0"><i class="fa-solid fa-check"></i></span>
+                            </div>
+                            <p class="font-bold text-white text-sm">Sistema de Gestión</p>
+                            <p class="text-xs text-gray-400">Inventario, control & admin</p>
+                        </div>
+
+                        <div class="calc-option-card p-4 rounded-2xl flex flex-col justify-between" data-type="Aplicación Móvil" data-time="20 a 40 días hábiles">
+                            <div class="flex items-center justify-between mb-2">
+                                <i class="fa-solid fa-mobile-screen text-2xl text-cyan-400"></i>
+                                <span class="check-icon w-5 h-5 rounded-full bg-cyan-400 text-black text-xs flex items-center justify-center opacity-0"><i class="fa-solid fa-check"></i></span>
+                            </div>
+                            <p class="font-bold text-white text-sm">App Móvil</p>
+                            <p class="text-xs text-gray-400">iOS & Android nativa/PWA</p>
+                        </div>
+
+                        <div class="calc-option-card p-4 rounded-2xl flex flex-col justify-between" data-type="Mantenimiento y Soporte" data-time="Continuo mensual">
+                            <div class="flex items-center justify-between mb-2">
+                                <i class="fa-solid fa-screwdriver-wrench text-2xl text-cyan-400"></i>
+                                <span class="check-icon w-5 h-5 rounded-full bg-cyan-400 text-black text-xs flex items-center justify-center opacity-0"><i class="fa-solid fa-check"></i></span>
+                            </div>
+                            <p class="font-bold text-white text-sm">Soporte & Optimización</p>
+                            <p class="text-xs text-gray-400">Planes mensuales dedicados</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 2: Funcionalidades Extra -->
+                <div class="mb-10">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2 font-heading">
+                        <span class="w-7 h-7 rounded-lg bg-indigo-500 text-white flex items-center justify-center text-xs font-black">2</span>
+                        Selecciona los complementos que necesitas:
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="addons-container">
+                        <label class="calc-checkbox-card p-4 rounded-2xl flex items-center gap-3 select-none">
+                            <input type="checkbox" value="Panel Administrable (CMS)" class="accent-cyan-400 w-4 h-4 rounded">
+                            <div>
+                                <p class="text-white text-sm font-semibold">Panel Administrable</p>
+                                <p class="text-[11px] text-gray-400">Gestiona contenido tú mismo</p>
+                            </div>
+                        </label>
+
+                        <label class="calc-checkbox-card p-4 rounded-2xl flex items-center gap-3 select-none">
+                            <input type="checkbox" value="Pasarela de Pagos Online" class="accent-cyan-400 w-4 h-4 rounded">
+                            <div>
+                                <p class="text-white text-sm font-semibold">Pasarela de Pagos</p>
+                                <p class="text-[11px] text-gray-400">Tarjetas, transferencias, PayPal</p>
+                            </div>
+                        </label>
+
+                        <label class="calc-checkbox-card p-4 rounded-2xl flex items-center gap-3 select-none">
+                            <input type="checkbox" value="SEO y Posicionamiento Google" class="accent-cyan-400 w-4 h-4 rounded">
+                            <div>
+                                <p class="text-white text-sm font-semibold">SEO Avanzado</p>
+                                <p class="text-[11px] text-gray-400">Aparece primero en Google</p>
+                            </div>
+                        </label>
+
+                        <label class="calc-checkbox-card p-4 rounded-2xl flex items-center gap-3 select-none">
+                            <input type="checkbox" value="Cuentas de Usuarios y Roles" class="accent-cyan-400 w-4 h-4 rounded">
+                            <div>
+                                <p class="text-white text-sm font-semibold">Usuarios & Roles</p>
+                                <p class="text-[11px] text-gray-400">Login, registro y permisos</p>
+                            </div>
+                        </label>
+
+                        <label class="calc-checkbox-card p-4 rounded-2xl flex items-center gap-3 select-none">
+                            <input type="checkbox" value="Integración con WhatsApp Directo" class="accent-cyan-400 w-4 h-4 rounded">
+                            <div>
+                                <p class="text-white text-sm font-semibold">Botón WhatsApp Directo</p>
+                                <p class="text-[11px] text-gray-400">Atención rápida al cliente</p>
+                            </div>
+                        </label>
+
+                        <label class="calc-checkbox-card p-4 rounded-2xl flex items-center gap-3 select-none">
+                            <input type="checkbox" value="Soporte y Mantenimiento Mensual" class="accent-cyan-400 w-4 h-4 rounded">
+                            <div>
+                                <p class="text-white text-sm font-semibold">Soporte Continuo</p>
+                                <p class="text-[11px] text-gray-400">Garantía y mejoras técnicas</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Resumen Dinámico y Botón de WhatsApp -->
+                <div class="bg-gradient-to-r from-slate-900 to-[#101424] p-6 sm:p-8 rounded-2xl border border-cyan-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+                    <div class="text-center md:text-left">
+                        <span class="text-xs font-tech uppercase tracking-widest text-cyan-400 font-bold">Resumen de Cotización</span>
+                        <h4 class="text-xl sm:text-2xl font-black text-white mt-1 font-heading" id="calc-summary-title">
+                            Landing Page
+                        </h4>
+                        <p class="text-xs text-gray-400 mt-1" id="calc-summary-addons">
+                            Complementos: Ninguno seleccionado
+                        </p>
+                        <div class="inline-flex items-center gap-2 mt-2 text-xs font-semibold text-emerald-400">
+                            <i class="fa-regular fa-clock"></i> Tiempo estimado de entrega: <span id="calc-estimated-time" class="font-bold text-white">3 a 7 días hábiles</span>
+                        </div>
+                    </div>
+
+                    <a href="#" id="btn-calc-whatsapp" target="_blank" class="btn-primary-glow w-full md:w-auto px-8 py-4 rounded-xl text-xs font-black uppercase tracking-widest flex items-center justify-center gap-3 whitespace-nowrap">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Cotizar por WhatsApp</span>
+                    </a>
+                </div>
+
             </div>
 
         </div>
     </section>
 
-    <!-- SECCIÓN: SERVICIOS -->
-    <section id="servicios" class="py-24 bg-[#181818] text-center">
-        <h2 class="text-4xl font-black italic uppercase mb-16 md:mb-20 tracking-wide" data-aos="fade-up">Servicios</h2>
+    <!-- SECCIÓN: NUESTRO PROCESO -->
+    <section id="proceso" class="py-24 bg-[#090a0f] relative">
+        <div class="container mx-auto px-6 max-w-6xl">
 
-        <div class="container mx-auto px-6 flex flex-wrap justify-center gap-12 md:gap-24">
-
-            <!-- Burbuja 1: Creación -->
-            <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="100">
-                <!-- Efecto Ola 1 -->
-                <div class="burbuja-ola ola-1">
-                    <div
-                        class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-cyan-300 flex items-center justify-center mb-6 animate-glow-cyan text-black text-4xl md:text-5xl">
-                        <i class="fa-solid fa-window-maximize"></i>
-                    </div>
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 text-xs font-bold tracking-wider uppercase mb-4">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Metodología Ágil</span>
                 </div>
-                <h3 class="text-xl md:text-2xl font-black italic">Creación</h3>
+                <h2 class="text-4xl sm:text-5xl font-black italic uppercase tracking-tight mb-4 font-heading">
+                    NUESTRO <span class="gradient-text-cyan">PROCESO</span>
+                </h2>
+                <p class="text-gray-400 text-base sm:text-lg">
+                    Del concepto a la realidad en 4 pasos estratégicos con comunicación transparente y entregas puntuales.
+                </p>
             </div>
 
-            <!-- Burbuja 2: Mantenimiento -->
-            <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="200">
-                <!-- Efecto Ola 2 -->
-                <div class="burbuja-ola ola-2">
-                    <div
-                        class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-indigo-600 flex items-center justify-center mb-6 animate-glow-indigo text-white text-4xl md:text-5xl">
-                        <i class="fa-solid fa-screwdriver-wrench"></i>
-                    </div>
-                </div>
-                <h3 class="text-xl md:text-2xl font-black italic">Mantenimiento</h3>
-            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            <!-- Burbuja 3: Soporte -->
-            <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="300">
-                <!-- Efecto Ola 3 -->
-                <div class="burbuja-ola ola-3">
-                    <div
-                        class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-cyan-300 flex items-center justify-center mb-6 animate-glow-cyan text-black text-4xl md:text-5xl">
-                        <i class="fa-solid fa-circle-question"></i>
-                    </div>
+                <!-- Paso 1 -->
+                <div class="glass-card p-6 rounded-2xl border border-white/10 relative group hover:border-cyan-400/50 transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-3xl font-black text-cyan-400/40 font-heading mb-4 group-hover:text-cyan-400 transition-colors">01</div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-heading">Descubrimiento</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Entendemos tu modelo de negocio, definimos objetivos claros y estructuramos los requerimientos técnicos de tu software.
+                    </p>
                 </div>
-                <h3 class="text-xl md:text-2xl font-black italic">Soporte</h3>
+
+                <!-- Paso 2 -->
+                <div class="glass-card p-6 rounded-2xl border border-white/10 relative group hover:border-cyan-400/50 transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-3xl font-black text-indigo-400/40 font-heading mb-4 group-hover:text-indigo-400 transition-colors">02</div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-heading">Diseño & UX</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Creamos interfaces modernas, intuitivas y visualmente impactantes enfocadas en la retención y conversión de usuarios.
+                    </p>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="glass-card p-6 rounded-2xl border border-white/10 relative group hover:border-cyan-400/50 transition-all" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-3xl font-black text-cyan-400/40 font-heading mb-4 group-hover:text-cyan-400 transition-colors">03</div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-heading">Desarrollo & QA</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Programamos código limpio, seguro y escalable, realizando pruebas rigurosas en múltiples navegadores y dispositivos.
+                    </p>
+                </div>
+
+                <!-- Paso 4 -->
+                <div class="glass-card p-6 rounded-2xl border border-white/10 relative group hover:border-cyan-400/50 transition-all" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-3xl font-black text-emerald-400/40 font-heading mb-4 group-hover:text-emerald-400 transition-colors">04</div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-heading">Lanzamiento & Soporte</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Desplegamos tu plataforma en servidores de alta disponibilidad y te brindamos soporte continuo para asegurar su éxito.
+                    </p>
+                </div>
+
             </div>
 
         </div>
     </section>
 
     <!-- SECCIÓN: PROYECTOS -->
-    <section id="proyectos" class="py-24 bg-[#181818] text-center">
-        <h2 class="text-4xl font-black italic uppercase mb-16 tracking-wide" data-aos="fade-up">PROYECTOS</h2>
+    <section id="proyectos" class="py-24 bg-gradient-to-b from-[#090a0f] via-[#0d0f18] to-[#090a0f] text-center relative">
+        <div class="container mx-auto px-6 max-w-6xl">
 
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl">
-
-            <!-- Tarjeta 1 -->
-            <div class="group bg-[#1e1e1e] rounded-3xl p-6 border border-gray-800 shadow-lg hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] transform hover:-translate-y-2 transition-all duration-500"
-                data-aos="fade-up" data-aos-delay="100">
-                <!-- Contenedor de Imagen -->
-                <div class="h-48 bg-gray-700 rounded-xl mb-6 flex items-center justify-center overflow-hidden relative">
-                    <img src="img/emmaa.jpg" alt="Centro Educativo Emma Balaguer"
-                        class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
+            <div class="max-w-3xl mx-auto mb-12" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 text-xs font-bold tracking-wider uppercase mb-4">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Casos de Éxito</span>
                 </div>
-
-                <h3
-                    class="text-xl font-bold uppercase mb-4 text-white group-hover:text-cyan-300 transition-colors duration-300">
-                    Centro Educativo</h3>
-
-                <p class="text-gray-400 mb-6 text-sm">
-                    Portal web moderno y visualmente hermoso para un centro educativo, mejorando la experiencia de
-                    estudiantes y profesores.
+                <h2 class="text-4xl sm:text-5xl font-black italic uppercase tracking-tight mb-4 font-heading">
+                    PROYECTOS <span class="gradient-text-cyan">DESTACADOS</span>
+                </h2>
+                <p class="text-gray-400 text-base sm:text-lg">
+                    Conoce algunas de las soluciones digitales que hemos diseñado y desarrollado con éxito.
                 </p>
-
-                <a href="https://centroemmabalaguerdevallejo.edu.do/" target="_blank"
-                    class="inline-block bg-cyan-300 text-black font-bold py-2 px-6 rounded-lg hover:bg-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] transition-all duration-300">
-                    Ver más
-                </a>
             </div>
 
-            <!-- Tarjeta 2 -->
-            <div class="group bg-[#1e1e1e] rounded-3xl p-6 border border-gray-800 shadow-lg hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] transform hover:-translate-y-2 transition-all duration-500"
-                data-aos="fade-up" data-aos-delay="200">
-                <!-- Contenedor de Imagen -->
-                <div class="h-48 bg-gray-700 rounded-xl mb-6 flex items-center justify-center overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="GestiWeb"
-                        class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
-                </div>
-
-                <h3
-                    class="text-xl font-bold uppercase mb-4 text-white group-hover:text-cyan-300 transition-colors duration-300">
-                    GestiWeb</h3>
-
-                <p class="text-gray-400 mb-6 text-sm">
-                    Portal web moderno y visualmente hermoso enfocado en la gestión empresarial y de inventario, simple,
-                    sencilla y eficiente.
-                </p>
-
-                <a href="#"
-                    class="inline-block bg-cyan-300 text-black font-bold py-2 px-6 rounded-lg hover:bg-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] transition-all duration-300">
-                    Ver más
-                </a>
+            <!-- Filtros de Proyectos -->
+            <div class="flex flex-wrap justify-center gap-3 mb-14" data-aos="fade-up" data-aos-delay="100">
+                <button class="project-filter-btn active px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-cyan-400 text-black transition-all" data-filter="all">
+                    Todos
+                </button>
+                <button class="project-filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-white/10 transition-all" data-filter="web">
+                    Webs
+                </button>
+                <button class="project-filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-white/10 transition-all" data-filter="sistemas">
+                    Sistemas
+                </button>
             </div>
 
-        </div>
+            <!-- Grid de Proyectos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left" id="projects-grid">
 
-        <!-- Botón Ver Todo -->
-        <div class="mt-16" data-aos="fade-up" data-aos-delay="300">
-            <button
-                class="bg-transparent border-2 border-gray-600 text-white font-bold py-3 px-10 rounded-full hover:bg-gray-800 hover:border-gray-500 hover:text-cyan-300 transition-all duration-300">
-                Ver todo
-            </button>
+                <!-- Tarjeta 1: Centro Educativo Emma Balaguer -->
+                <div class="project-card group glass-card rounded-3xl p-6 border border-white/10 shadow-xl hover:shadow-[0_0_30px_rgba(0,242,254,0.25)] transform hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between"
+                    data-category="web" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <!-- Contenedor de Imagen con Overlay -->
+                        <div class="h-52 bg-slate-900 rounded-2xl mb-6 overflow-hidden relative border border-white/5">
+                            <img src="img/emmaa.jpg" alt="Centro Educativo Emma Balaguer" width="500" height="350" loading="lazy" decoding="async"
+                                class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                            <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[11px] font-bold text-cyan-300 border border-cyan-400/30">
+                                Web Institucional
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-black uppercase mb-3 text-white group-hover:text-cyan-300 transition-colors duration-300 font-heading">
+                            Centro Educativo
+                        </h3>
+
+                        <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+                            Portal web moderno y visualmente hermoso para un centro educativo, mejorando la experiencia de estudiantes y profesores con acceso a información escolar.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-[11px] text-gray-400 font-tech">Diseño Moderno</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-[11px] text-gray-400 font-tech">100% Responsivo</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-[11px] text-gray-400 font-tech">Educación</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+                        <a href="https://centroemmabalaguerdevallejo.edu.do/" target="_blank"
+                            class="flex-1 bg-cyan-400 text-black font-black py-2.5 px-4 rounded-xl text-center text-xs uppercase tracking-wider hover:bg-cyan-300 hover:shadow-[0_0_15px_rgba(0,242,254,0.4)] transition-all duration-300">
+                            Visitar Sitio <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+                        </a>
+                        <button class="btn-open-project-modal w-10 h-10 rounded-xl bg-white/5 hover:bg-cyan-400/20 hover:text-cyan-400 border border-white/10 flex items-center justify-center text-gray-300 transition-all"
+                            data-title="Centro Educativo Emma Balaguer"
+                            data-category="Portal Web Institucional"
+                            data-img="img/emmaa.jpg"
+                            data-desc="Desarrollo integral del portal web oficial para el Centro Educativo Emma Balaguer. Diseñado para optimizar la comunicación entre directivos, docentes, padres y estudiantes con una interfaz limpia, navegación ágil y adaptabilidad móvil absoluta."
+                            data-tags="HTML5, Tailwind CSS, JavaScript, SEO Optimizado, CDN"
+                            data-link="https://centroemmabalaguerdevallejo.edu.do/"
+                            aria-label="Ver detalles del Centro Educativo">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: GestiWeb -->
+                <div class="project-card group glass-card rounded-3xl p-6 border border-white/10 shadow-xl hover:shadow-[0_0_30px_rgba(0,242,254,0.25)] transform hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between"
+                    data-category="sistemas" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <!-- Contenedor de Imagen con Overlay -->
+                        <div class="h-52 bg-slate-900 rounded-2xl mb-6 overflow-hidden relative border border-white/5">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="GestiWeb" width="500" height="350" loading="lazy" decoding="async"
+                                class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                            <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[11px] font-bold text-indigo-300 border border-indigo-400/30">
+                                Sistema de Gestión
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-black uppercase mb-3 text-white group-hover:text-cyan-300 transition-colors duration-300 font-heading">
+                            GestiWeb
+                        </h3>
+
+                        <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+                            Portal web moderno y visualmente hermoso enfocado en la gestión empresarial y de inventario, simple, sencilla y eficiente para la toma de decisiones.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-[11px] text-gray-400 font-tech">Dashboard</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-[11px] text-gray-400 font-tech">Inventario</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-[11px] text-gray-400 font-tech">Reportes</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+                        <button class="btn-open-project-modal flex-1 bg-cyan-400 text-black font-black py-2.5 px-4 rounded-xl text-center text-xs uppercase tracking-wider hover:bg-cyan-300 hover:shadow-[0_0_15px_rgba(0,242,254,0.4)] transition-all duration-300"
+                            data-title="GestiWeb - Sistema de Gestión Empresarial"
+                            data-category="Software de Inventario & Facturación"
+                            data-img="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            data-desc="GestiWeb es una plataforma modular para negocios que necesitan controlar su inventario en tiempo real, generar reportes de ventas y automatizar procesos administrativos con la máxima simplicidad y rapidez."
+                            data-tags="Arquitectura Modular, Base de Datos Segura, Gráficas Interactivas, Multi-Usuario"
+                            data-link="#">
+                            Ver Detalles <i class="fa-solid fa-circle-info ml-1 text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Suite Cloud NetSol -->
+                <div class="project-card group glass-card rounded-3xl p-6 border border-white/10 shadow-xl hover:shadow-[0_0_30px_rgba(0,242,254,0.25)] transform hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between"
+                    data-category="sistemas" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <!-- Contenedor de Imagen con Overlay -->
+                        <div class="h-52 bg-slate-900 rounded-2xl mb-6 overflow-hidden relative border border-white/5">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="NetSol Suite" width="500" height="350" loading="lazy" decoding="async"
+                                class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                            <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[11px] font-bold text-emerald-300 border border-emerald-400/30">
+                                Solución Cloud
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-black uppercase mb-3 text-white group-hover:text-cyan-300 transition-colors duration-300 font-heading">
+                            NetSol Cloud Hub
+                        </h3>
+
+                        <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+                            Arquitectura web escalable de alto rendimiento para integración de microservicios, seguridad avanzada y diseño UI/UX de última generación.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-[11px] text-gray-400 font-tech">Cloud Native</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-[11px] text-gray-400 font-tech">API REST</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-[11px] text-gray-400 font-tech">Alta Disponibilidad</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+                        <button class="btn-open-project-modal flex-1 bg-cyan-400 text-black font-black py-2.5 px-4 rounded-xl text-center text-xs uppercase tracking-wider hover:bg-cyan-300 hover:shadow-[0_0_15px_rgba(0,242,254,0.4)] transition-all duration-300"
+                            data-title="NetSol Cloud Hub"
+                            data-category="Infraestructura & Microservicios Cloud"
+                            data-img="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            data-desc="Ecosistema de servicios interconectados para empresas en crecimiento. Permite procesar datos masivos, sincronizar terminales y garantizar disponibilidad ininterrumpida con copias de respaldo continuas."
+                            data-tags="Node.js, PostgreSQL, Docker, Redis, Cloud Hosting"
+                            data-link="#">
+                            Ver Detalles <i class="fa-solid fa-circle-info ml-1 text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Botón de Contacto Rápido -->
+            <div class="mt-16" data-aos="fade-up" data-aos-delay="300">
+                <a href="#contactanos" class="inline-flex items-center gap-3 btn-secondary-glow font-bold py-3.5 px-10 rounded-full text-xs uppercase tracking-widest">
+                    <span>¿Tienes un proyecto en mente? Hablemos</span>
+                    <i class="fa-solid fa-arrow-right text-cyan-400"></i>
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- SECCIÓN: CONTACTANOS -->
-    <section id="contactanos" class="py-24 relative overflow-hidden bg-gradient-to-b from-[#181818] to-[#111111]">
+    <!-- SECCIÓN: PREGUNTAS FRECUENTES (FAQ) -->
+    <section id="faq" class="py-24 bg-[#090a0f] relative">
+        <div class="container mx-auto px-6 max-w-4xl">
 
-        <!-- Luces de fondo ambientales (Reemplazo de los cuadrados) -->
-        <div class="absolute -left-20 top-20 w-72 h-72 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none">
-        </div>
-        <div class="absolute -right-20 bottom-10 w-96 h-96 bg-cyan-400/5 rounded-full blur-[120px] pointer-events-none">
-        </div>
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 text-xs font-bold tracking-wider uppercase mb-4">
+                    <i class="fa-solid fa-question"></i>
+                    <span>Dudas Habituales</span>
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-black italic uppercase tracking-tight mb-4 font-heading">
+                    PREGUNTAS <span class="gradient-text-cyan">FRECUENTES</span>
+                </h2>
+                <p class="text-gray-400 text-base sm:text-lg">
+                    Resolvemos tus principales inquietudes sobre nuestro proceso de trabajo y servicios.
+                </p>
+            </div>
 
-        <div class="container mx-auto px-6 flex flex-col md:flex-row max-w-6xl gap-16 relative z-10 items-center">
+            <div class="space-y-4" id="faq-accordion">
+
+                <!-- FAQ 1 -->
+                <div class="faq-item glass-card rounded-2xl border border-white/10 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-header p-6 flex items-center justify-between cursor-pointer">
+                        <h3 class="text-base sm:text-lg font-bold text-white font-heading">
+                            ¿Cuánto tiempo toma desarrollar una página web o sistema?
+                        </h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-cyan-400 transition-transform duration-300 text-sm"></i>
+                    </div>
+                    <div class="faq-content px-6 pb-6">
+                        <p class="text-sm text-gray-300 leading-relaxed border-t border-white/5 pt-4">
+                            El tiempo depende de la complejidad de cada proyecto. Una Landing Page o sitio web corporativo suele estar listo en un plazo de <strong>3 a 10 días hábiles</strong>. Para sistemas a medida, plataformas de e-commerce o aplicaciones más complejas, el tiempo habitual ronda entre <strong>2 a 4 semanas</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item glass-card rounded-2xl border border-white/10 overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-header p-6 flex items-center justify-between cursor-pointer">
+                        <h3 class="text-base sm:text-lg font-bold text-white font-heading">
+                            ¿Mi sitio web o aplicación funcionará bien en teléfonos celulares?
+                        </h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-cyan-400 transition-transform duration-300 text-sm"></i>
+                    </div>
+                    <div class="faq-content px-6 pb-6">
+                        <p class="text-sm text-gray-300 leading-relaxed border-t border-white/5 pt-4">
+                            ¡Totalmente! En NetSol aplicamos la filosofía <em>Mobile-First</em>. Todos nuestros desarrollos son <strong>100% responsivos</strong>, adaptándose con fluidez a cualquier tamaño de pantalla (smartphones, tablets, laptops y monitores 4K), ofreciendo tiempos de carga ultrarrápidos y experiencia táctil inmejorable.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item glass-card rounded-2xl border border-white/10 overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-header p-6 flex items-center justify-between cursor-pointer">
+                        <h3 class="text-base sm:text-lg font-bold text-white font-heading">
+                            ¿Qué incluye el servicio de mantenimiento y soporte?
+                        </h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-cyan-400 transition-transform duration-300 text-sm"></i>
+                    </div>
+                    <div class="faq-content px-6 pb-6">
+                        <p class="text-sm text-gray-300 leading-relaxed border-t border-white/5 pt-4">
+                            Incluye monitoreo constante del servidor, copias de seguridad automáticas, actualización de tecnologías y certificados SSL, parches de seguridad, optimización de velocidad continua y soporte técnico directo para resolver cualquier duda o necesidad puntual.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item glass-card rounded-2xl border border-white/10 overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                    <div class="faq-header p-6 flex items-center justify-between cursor-pointer">
+                        <h3 class="text-base sm:text-lg font-bold text-white font-heading">
+                            ¿Cómo es el proceso de pago y contratación?
+                        </h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-cyan-400 transition-transform duration-300 text-sm"></i>
+                    </div>
+                    <div class="faq-content px-6 pb-6">
+                        <p class="text-sm text-gray-300 leading-relaxed border-t border-white/5 pt-4">
+                            Trabajamos generalmente bajo un esquema de <strong>50% de anticipo</strong> para iniciar el desarrollo y el <strong>50% restante contra entrega y aprobación final</strong> de tu proyecto. Aceptamos transferencias bancarias locales e internacionales, tarjetas y pagos online seguros.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN: CONTÁCTANOS -->
+    <section id="contactanos" class="py-24 relative overflow-hidden bg-gradient-to-b from-[#090a0f] via-[#0e111a] to-[#090a0f]">
+
+        <!-- Luces Ambientales de Fondo -->
+        <div class="absolute -left-20 top-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute -right-20 bottom-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 flex flex-col lg:flex-row max-w-6xl gap-12 lg:gap-16 relative z-10 items-stretch">
 
             <!-- Columna Izquierda: Formulario -->
-            <div class="md:w-1/2 w-full" data-aos="fade-right">
-                <h2 class="text-5xl sm:text-6xl font-black italic uppercase mb-4 tracking-tighter">
-                    Contáctanos<span class="text-cyan-400">.</span>
-                </h2>
-                <p class="text-gray-400 text-lg mb-10 max-w-md leading-relaxed">
-                    ¿Tienes una idea en mente? Llena el formulario o encuéntranos en nuestras redes. Estamos listos para
-                    crear.
-                </p>
-
-                <form action="https://formsubmit.co/somosnetsol@gmail.com" method="POST" class="space-y-6">
-                    <input type="hidden" name="_subject" value="Nuevo mensaje desde la web de NetSol!">
-                    <input type="hidden" name="_captcha" value="false">
-
-                    <!-- Inputs Estilizados -->
-                    <div class="relative">
-                        <input type="text" name="Nombre" placeholder="Tu Nombre" required
-                            class="w-full bg-[#1a1a1a] border border-gray-800 text-white px-6 py-4 rounded-xl focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all duration-300 placeholder-gray-600">
+            <div class="lg:w-1/2 w-full flex flex-col justify-between" data-aos="fade-right">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 text-xs font-bold tracking-wider uppercase mb-4">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Inicia Tu Proyecto</span>
                     </div>
 
-                    <div class="relative">
-                        <input type="email" name="Correo" placeholder="Tu Correo Electrónico" required
-                            class="w-full bg-[#1a1a1a] border border-gray-800 text-white px-6 py-4 rounded-xl focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all duration-300 placeholder-gray-600">
-                    </div>
+                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black italic uppercase mb-4 tracking-tighter font-heading">
+                        Contáctanos<span class="text-cyan-400">.</span>
+                    </h2>
 
-                    <div class="relative">
-                        <textarea name="Mensaje" placeholder="¿Cómo podemos ayudarte?" rows="4" required
-                            class="w-full bg-[#1a1a1a] border border-gray-800 text-white px-6 py-4 rounded-xl focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all duration-300 placeholder-gray-600 resize-none"></textarea>
-                    </div>
+                    <p class="text-gray-300 text-base sm:text-lg mb-8 leading-relaxed">
+                        ¿Tienes una idea en mente? Llena el formulario o encuéntranos en nuestras redes. Estamos listos para crear el mejor software para ti.
+                    </p>
 
-                    <button type="submit"
-                        class="w-full bg-cyan-400 text-black font-black uppercase tracking-widest py-4 rounded-xl hover:bg-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transform hover:-translate-y-1 transition-all duration-300 flex justify-center items-center gap-3">
-                        Enviar Mensaje <i class="fa-solid fa-paper-plane"></i>
-                    </button>
-                </form>
+                    <!-- Formulario con AJAX -->
+                    <form id="contact-form" action="https://formsubmit.co/somosnetsol@gmail.com" method="POST" class="space-y-4">
+                        <input type="hidden" name="_subject" value="¡Nuevo mensaje desde la web de NetSol!">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+
+                        <!-- Inputs Estilizados -->
+                        <div>
+                            <label for="contact-nombre" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 font-tech">Nombre Completo *</label>
+                            <input type="text" id="contact-nombre" name="Nombre" placeholder="Ej: Alexander García" required
+                                class="custom-input w-full px-5 py-3.5 rounded-xl text-sm placeholder-gray-500">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="contact-correo" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 font-tech">Correo Electrónico *</label>
+                                <input type="email" id="contact-correo" name="Correo" placeholder="tu@correo.com" required
+                                    class="custom-input w-full px-5 py-3.5 rounded-xl text-sm placeholder-gray-500">
+                            </div>
+
+                            <div>
+                                <label for="contact-telefono" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 font-tech">Teléfono / WhatsApp</label>
+                                <input type="tel" id="contact-telefono" name="Telefono" placeholder="+1 (849) 000-0000"
+                                    class="custom-input w-full px-5 py-3.5 rounded-xl text-sm placeholder-gray-500">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="contact-servicio" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 font-tech">Servicio de Interés</label>
+                            <select id="contact-servicio" name="Servicio" class="custom-input w-full px-5 py-3.5 rounded-xl text-sm text-gray-300">
+                                <option value="Desarrollo Web / Landing Page">Desarrollo Web / Landing Page</option>
+                                <option value="Sistema de Gestión / ERP">Sistema de Gestión / ERP</option>
+                                <option value="Aplicación Móvil">Aplicación Móvil</option>
+                                <option value="Mantenimiento & Soporte">Mantenimiento & Soporte</option>
+                                <option value="Consultoría / Otro">Consultoría / Otro</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="contact-mensaje" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 font-tech">Detalles de tu idea o proyecto *</label>
+                            <textarea id="contact-mensaje" name="Mensaje" placeholder="Cuéntanos sobre tu negocio, requerimientos o presupuesto estimado..." rows="4" required
+                                class="custom-input w-full px-5 py-3.5 rounded-xl text-sm placeholder-gray-500 resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" id="btn-submit-contact"
+                            class="btn-primary-glow w-full py-4 rounded-xl text-xs font-black uppercase tracking-widest flex justify-center items-center gap-3">
+                            <span id="btn-submit-text">Enviar Mensaje</span>
+                            <i class="fa-solid fa-paper-plane" id="btn-submit-icon"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
 
             <!-- Columna Derecha: Tarjeta de Información -->
-            <div class="md:w-1/2 w-full" data-aos="fade-left">
-                <div
-                    class="bg-gradient-to-br from-[#1a1a1a] to-[#141414] p-10 sm:p-14 rounded-3xl border border-gray-800 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+            <div class="lg:w-1/2 w-full flex" data-aos="fade-left">
+                <div class="glass-card w-full p-8 sm:p-12 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden flex flex-col justify-between">
 
-                    <!-- Detalle de diseño dentro de la tarjeta -->
-                    <div
-                        class="absolute top-0 right-0 w-32 h-32 bg-cyan-400/5 rounded-bl-full transition-transform duration-700 group-hover:scale-125">
+                    <!-- Decoración Superior -->
+                    <div class="absolute -top-12 -right-12 w-48 h-48 bg-cyan-500/10 rounded-full blur-[40px] pointer-events-none"></div>
+
+                    <div>
+                        <!-- Estado de Horario en Vivo -->
+                        <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                            <div>
+                                <h3 class="text-2xl sm:text-3xl font-black italic text-white font-heading">Información</h3>
+                                <p class="text-xs text-gray-400 font-tech">Canales oficiales de NetSol</p>
+                            </div>
+                            <div id="office-status-badge" class="px-3 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 text-xs font-bold flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span id="office-status-text">Abierto ahora</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 text-gray-300 font-medium">
+
+                            <!-- Correo con Copia Rápida -->
+                            <div class="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-cyan-400/40 transition-colors group">
+                                <a href="mailto:somosnetsol@gmail.com" class="flex items-center gap-4 min-w-0">
+                                    <div class="w-12 h-12 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-cyan-400 text-lg group-hover:bg-cyan-400 group-hover:text-black transition-all shrink-0">
+                                        <i class="fa-regular fa-envelope"></i>
+                                    </div>
+                                    <div class="truncate">
+                                        <p class="text-[11px] text-gray-400 font-tech uppercase">Correo Electrónico</p>
+                                        <span class="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors truncate">somosnetsol@gmail.com</span>
+                                    </div>
+                                </a>
+                                <button class="btn-copy-text w-9 h-9 rounded-lg bg-white/5 hover:bg-cyan-400 hover:text-black text-gray-400 flex items-center justify-center transition-all ml-2 shrink-0" data-clipboard="somosnetsol@gmail.com" title="Copiar correo">
+                                    <i class="fa-regular fa-copy text-xs"></i>
+                                </button>
+                            </div>
+
+                            <!-- Teléfono con Copia y WhatsApp -->
+                            <div class="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-cyan-400/40 transition-colors group">
+                                <a href="https://wa.me/18494661247" target="_blank" class="flex items-center gap-4 min-w-0">
+                                    <div class="w-12 h-12 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-cyan-400 text-lg group-hover:bg-cyan-400 group-hover:text-black transition-all shrink-0">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </div>
+                                    <div class="truncate">
+                                        <p class="text-[11px] text-gray-400 font-tech uppercase">WhatsApp / Teléfono</p>
+                                        <span class="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors">+1 (849) 466-1247</span>
+                                    </div>
+                                </a>
+                                <div class="flex items-center gap-1.5 ml-2 shrink-0">
+                                    <a href="https://wa.me/18494661247" target="_blank" class="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500 hover:text-black flex items-center justify-center transition-all" title="Abrir WhatsApp">
+                                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                                    </a>
+                                    <button class="btn-copy-text w-9 h-9 rounded-lg bg-white/5 hover:bg-cyan-400 hover:text-black text-gray-400 flex items-center justify-center transition-all" data-clipboard="+18494661247" title="Copiar número">
+                                        <i class="fa-regular fa-copy text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Horario de Atención -->
+                            <div class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
+                                <div class="w-12 h-12 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-cyan-400 text-lg shrink-0">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[11px] text-gray-400 font-tech uppercase">Horario de Atención</p>
+                                    <span class="text-sm sm:text-base font-bold text-white">8:00 AM - 6:00 PM (Lunes a Sábado)</span>
+                                </div>
+                            </div>
+
+                            <!-- Handle de Marca -->
+                            <div class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
+                                <div class="w-12 h-12 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-cyan-400 text-lg shrink-0">
+                                    <i class="fa-solid fa-at"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[11px] text-gray-400 font-tech uppercase">Identidad Oficial</p>
+                                    <span class="text-sm sm:text-base font-black uppercase tracking-wider text-cyan-300 font-heading">somosnetsol</span>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
-                    <h3 class="text-3xl font-black italic mb-10 text-white">Información</h3>
-
-                    <div class="space-y-8 text-gray-300 font-medium">
-
-                        <!-- Item de Contacto -->
-                        <a href="mailto:somosnetsol@gmail.com"
-                            class="flex items-center gap-6 group/item hover:text-white transition-colors duration-300">
-                            <div
-                                class="w-14 h-14 rounded-full bg-[#111] border border-gray-800 flex items-center justify-center text-cyan-400 group-hover/item:bg-cyan-400 group-hover/item:text-black transition-all duration-300 shadow-lg">
-                                <i class="fa-regular fa-envelope text-xl"></i>
-                            </div>
-                            <span class="text-lg break-all">somosnetsol@gmail.com</span>
-                        </a>
-
-                        <!-- Item de Contacto -->
-                        <div class="flex items-center gap-6 group/item hover:text-white transition-colors duration-300">
-                            <div
-                                class="w-14 h-14 rounded-full bg-[#111] border border-gray-800 flex items-center justify-center text-cyan-400 group-hover/item:bg-cyan-400 group-hover/item:text-black transition-all duration-300 shadow-lg">
-                                <i class="fa-solid fa-phone text-xl"></i>
-                            </div>
-                            <span class="text-lg">+1 (849) 466-1247</span>
+                    <!-- Redes Sociales Directas -->
+                    <div class="pt-8 mt-8 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-xs uppercase tracking-wider text-gray-400 font-bold">Síguenos:</span>
+                        <div class="flex items-center gap-3">
+                            <a href="https://www.instagram.com/neetsol?igsh=MWFrdW5zM2xjdThhdw==" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 hover:text-white border border-white/10 flex items-center justify-center text-gray-300 transition-all" aria-label="Instagram de NetSol">
+                                <i class="fa-brands fa-instagram text-base"></i>
+                            </a>
+                            <a href="https://www.facebook.com/share/1CbZXqxJZi/" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-blue-600 hover:text-white border border-white/10 flex items-center justify-center text-gray-300 transition-all" aria-label="Facebook de NetSol">
+                                <i class="fa-brands fa-facebook-f text-sm"></i>
+                            </a>
                         </div>
-
-                        <!-- Item de Contacto -->
-                        <div class="flex items-center gap-6 group/item hover:text-white transition-colors duration-300">
-                            <div
-                                class="w-14 h-14 rounded-full bg-[#111] border border-gray-800 flex items-center justify-center text-cyan-400 group-hover/item:bg-cyan-400 group-hover/item:text-black transition-all duration-300 shadow-lg">
-                                <i class="fa-regular fa-clock text-xl"></i>
-                            </div>
-                            <span class="text-lg">8:00 AM - 6:00 PM</span>
-                        </div>
-
-                        <!-- Item de Contacto -->
-                        <div class="flex items-center gap-6 group/item hover:text-white transition-colors duration-300">
-                            <div
-                                class="w-14 h-14 rounded-full bg-[#111] border border-gray-800 flex items-center justify-center text-cyan-400 group-hover/item:bg-cyan-400 group-hover/item:text-black transition-all duration-300 shadow-lg">
-                                <i class="fa-solid fa-at text-xl"></i>
-                            </div>
-                            <span class="text-lg uppercase tracking-wider font-bold">somosnetsol</span>
-                        </div>
-
                     </div>
+
                 </div>
             </div>
 
@@ -419,37 +1178,133 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-[#111111] py-8 border-t border-gray-800">
-        <div
-            class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+    <footer class="bg-[#05060a] py-12 border-t border-white/10 relative">
+        <div class="container mx-auto px-6 max-w-7xl flex flex-col md:flex-row justify-between items-center gap-8">
 
-            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-2 mb-4 md:mb-0">
-                <div class="flex items-center gap-2">
+            <!-- Logo y Descripción Breve -->
+            <div class="flex flex-col items-center md:items-start text-center md:text-left gap-3">
+                <a href="#inicio" class="flex items-center gap-2">
                     <div class="flex gap-1">
-                        <div class="w-1.5 h-5 bg-cyan-300"></div>
-                        <div class="w-1.5 h-5 bg-blue-500"></div>
-                        <div class="w-1.5 h-5 bg-indigo-600"></div>
+                        <div class="w-1.5 h-5 bg-cyan-400 rounded-sm"></div>
+                        <div class="w-1.5 h-5 bg-blue-500 rounded-sm"></div>
+                        <div class="w-1.5 h-5 bg-indigo-600 rounded-sm"></div>
                     </div>
-                    <span class="text-lg font-bold tracking-widest uppercase">NetSol</span>
-                </div>
+                    <span class="text-xl font-black tracking-widest uppercase font-heading text-white">NetSol</span>
+                </a>
+                <p class="text-xs text-gray-400 max-w-xs font-normal">
+                    Creamos software a tu medida. Páginas web, aplicaciones móviles y sistemas eficientes.
+                </p>
+            </div>
 
-                <div class="flex gap-6 md:ml-6 text-xl mt-2 md:mt-0">
-                    <a href="https://www.instagram.com/neetsol?igsh=MWFrdW5zM2xjdThhdw=="
-                        class="hover:text-cyan-400 transition"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/share/1CbZXqxJZi/" class="hover:text-cyan-400 transition"><i
-                            class="fa-brands fa-facebook-f"></i></a>
+            <!-- Links Rápidos -->
+            <div class="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-wider font-semibold text-gray-400">
+                <a href="#inicio" class="hover:text-cyan-400 transition-colors">Inicio</a>
+                <a href="#servicios" class="hover:text-cyan-400 transition-colors">Servicios</a>
+                <a href="#cotizador" class="hover:text-cyan-400 transition-colors">Cotizador</a>
+                <a href="#proyectos" class="hover:text-cyan-400 transition-colors">Proyectos</a>
+                <a href="#faq" class="hover:text-cyan-400 transition-colors">Preguntas</a>
+                <a href="#contactanos" class="hover:text-cyan-400 transition-colors">Contacto</a>
+            </div>
+
+            <!-- Redes y Derechos -->
+            <div class="flex flex-col items-center md:items-end gap-3">
+                <div class="flex gap-4 text-lg">
+                    <a href="https://www.instagram.com/neetsol?igsh=MWFrdW5zM2xjdThhdw==" target="_blank" class="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/share/1CbZXqxJZi/" target="_blank" class="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/18494661247" target="_blank" class="text-gray-400 hover:text-emerald-400 transition-colors" aria-label="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+                <div class="text-xs text-gray-500 font-bold uppercase tracking-wider font-tech">
+                    © 2025 - 2026 NetSol. Todos los derechos reservados.
                 </div>
             </div>
 
-            <div class="text-xs text-gray-600 font-bold uppercase tracking-wider mt-2 md:mt-0">
-                todos los derechos reservados. somosnetsol@
-            </div>
         </div>
     </footer>
 
-    <!-- Archivo JS de la librería de animaciones (Debe ir antes de tu main.js) -->
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <aside aria-label="Contacto flotante">
+        <a href="https://wa.me/18494661247?text=Hola%20NetSol,%20estoy%20interesado%20en%20crear%20un%20proyecto%20de%20software." target="_blank" class="fixed bottom-6 right-6 z-40 group floating-widget" aria-label="Chatear por WhatsApp">
+            <div class="relative flex items-center justify-center w-14 h-14 bg-emerald-500 rounded-full shadow-[0_10px_25px_rgba(16,185,129,0.5)] text-black text-2xl pulse-ring-wa group-hover:scale-110 transition-transform">
+                <i class="fa-brands fa-whatsapp text-white"></i>
+            </div>
+            <!-- Tooltip -->
+            <span class="absolute right-16 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-slate-900/95 border border-emerald-500/30 text-emerald-300 text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-xl pointer-events-none">
+                ¿Hablamos por WhatsApp?
+            </span>
+        </a>
+
+        <!-- BOTÓN VOLVER ARRIBA CON SCROLL PROGRESS -->
+        <button id="btn-scroll-top" class="fixed bottom-24 right-6 z-40 w-11 h-11 rounded-full glass-card border border-cyan-500/30 text-cyan-400 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-cyan-400 hover:text-black shadow-lg" aria-label="Volver arriba">
+            <i class="fa-solid fa-arrow-up text-sm"></i>
+        </button>
+    </aside>
+
+    <!-- MODAL DETALLE DE PROYECTO -->
+    <div id="project-modal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="modal-container glass-card w-full max-w-2xl rounded-3xl p-6 sm:p-8 border border-white/20 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <!-- Botón Cerrar -->
+            <button id="btn-close-modal" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white flex items-center justify-center transition-all" aria-label="Cerrar modal">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Contenido Dinámico del Modal -->
+            <div class="mb-4">
+                <span id="modal-category" class="px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-400/30 text-cyan-300 text-xs font-bold uppercase tracking-wider">
+                    Categoría
+                </span>
+            </div>
+
+            <h3 id="modal-title" class="text-2xl sm:text-3xl font-black text-white mb-4 font-heading">
+                Título del Proyecto
+            </h3>
+
+            <div class="h-64 sm:h-72 rounded-2xl overflow-hidden mb-6 border border-white/10 bg-slate-900">
+                <img id="modal-img" src="" alt="Vista previa del proyecto" width="600" height="350" class="w-full h-full object-cover">
+            </div>
+
+            <p id="modal-desc" class="text-gray-300 text-sm leading-relaxed mb-6">
+                Descripción del proyecto...
+            </p>
+
+            <div class="mb-6">
+                <h4 class="text-xs uppercase tracking-widest text-gray-400 font-bold mb-2 font-tech">Tecnologías & Enfoque:</h4>
+                <div id="modal-tags" class="flex flex-wrap gap-2">
+                    <!-- Badges dinámicos -->
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-white/10 flex items-center justify-end gap-3">
+                <button id="btn-modal-dismiss" class="px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 text-xs font-bold uppercase tracking-wider transition-all">
+                    Cerrar
+                </button>
+                <a id="modal-link" href="#" target="_blank" class="btn-primary-glow px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest flex items-center gap-2">
+                    <span>Visitar Web Real</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICACIÓN TOAST FLOTANTE -->
+    <div id="toast-notification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 glass-card px-6 py-3.5 rounded-2xl border border-cyan-400/40 shadow-2xl flex items-center gap-3 bg-slate-900/95 backdrop-blur-xl">
+        <div id="toast-icon" class="w-6 h-6 rounded-full bg-cyan-400/20 text-cyan-400 flex items-center justify-center text-xs">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <p id="toast-message" class="text-xs font-bold text-white tracking-wide">
+            ¡Acción realizada con éxito!
+        </p>
+    </div>
+
+    <!-- LIBRERÍA DE ANIMACIONES AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- TU ARCHIVO JAVASCRIPT PERSONALIZADO -->
+
+    <!-- ARCHIVO JAVASCRIPT PRINCIPAL -->
     <script src="main.js"></script>
 </body>
 
